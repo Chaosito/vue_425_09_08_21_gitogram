@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "avatar": "https://picsum.photos/300/300",
+        "username": "John Doe"
+    },
+    {
+        "id": "2",
+        "avatar": "https://picsum.photos/300/300",
+        "username": "Alice"
+    },
+    {
+        "id": "3",
+        "avatar": "https://picsum.photos/300/300",
+        "username": "Serhio"
+    },
+    {
+        "id": "4",
+        "avatar": "https://picsum.photos/300/300",
+        "username": "John Doe"
+    },
+    {
+        "id": "5",
+        "avatar": "https://picsum.photos/300/300",
+        "username": "Alice"
+    },
+    {
+        "id": "6",
+        "avatar": "https://picsum.photos/300/300",
+        "username": "Serhio"
+    },
+    {
+        "id": "7",
+        "avatar": "https://picsum.photos/300/300",
+        "username": "John Doe"
+    },
+    {
+        "id": "8",
+        "avatar": "https://picsum.photos/300/300",
+        "username": "Alice"
+    },
+    {
+        "id": "9",
+        "avatar": "https://picsum.photos/300/300",
+        "username": "Serhio"
+    },
+    {
+        "id": "10",
+        "avatar": "https://picsum.photos/300/300",
+        "username": "John Doe"
+    }
+]
