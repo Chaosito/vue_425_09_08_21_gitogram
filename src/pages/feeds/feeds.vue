@@ -2,7 +2,7 @@
     <div class="topline">
         <topline>
             <template #headline>
-                <h1>Header</h1>
+                <div class="icon"><icon name="home" /></div>
             </template>
             <template #content>
                 <h2>Stories</h2>
@@ -13,10 +13,19 @@
 
 <script>
 import { topline } from '../../components/topline'
+import { icon } from '../../icons'
 export default {
   name: 'feeds',
   components: {
-    topline
+    topline,
+    icon
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.icon {
+    color: red;
+    width: 50px;
+}
+</style>
