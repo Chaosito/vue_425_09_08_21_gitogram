@@ -14,6 +14,8 @@
                         />
                     </li>
                 </ul>
+                <feed />
+                <feed />
             </template>
         </topline>
     </div>
@@ -24,13 +26,15 @@ import StoryUserItem from '../../components/storyUserItem/storyUserItem.vue'
 import { topline } from '../../components/topline'
 import { icon } from '../../icons'
 import stories from './data.json'
+import feed from '../../components/feed/feed.vue'
 
 export default {
   name: 'feeds',
   components: {
     topline,
     icon,
-    StoryUserItem
+    StoryUserItem,
+    feed
   },
   data () {
     return {
