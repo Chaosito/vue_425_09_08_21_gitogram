@@ -1,0 +1,32 @@
+.icon{
+    width: 13px;
+}
+
+.score-items {
+    display:inline-flex;
+    border: 1px solid #1B1F2315;
+    border-radius: 5px;
+    margin-top:30px;
+
+    >div {
+        display: inline-flex;
+        align-items:center;
+        padding:2px 10px 2px 10px;
+        border-right: 1px solid #1B1F2315;
+        &:hover {
+            color:gray;
+        }
+        cursor: pointer;
+    }
+    >div:nth-child(1), >div:nth-child(3){
+        background-color: #FAFBFC;
+        
+    }
+    >div:nth-child(4){
+        border-right: 0;
+    }
+    // .icon
+    .icon {
+        margin: 4px;
+    }
+}

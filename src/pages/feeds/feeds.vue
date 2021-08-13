@@ -28,8 +28,8 @@
         <template #feedbody>
           <div class="feedbody_popup">
           <div style="font-size: 26px; font-weight: bold;">Vue.js</div>
-          <div>JavaScript framework for building interactive web applications ⚡</div>
-          <div>ScoreComponent</div>
+          <div><b>JavaScript</b> framework for building interactive web applications ⚡</div>
+          <score />
           </div>
         </template>
       </feed>
@@ -37,8 +37,8 @@
         <template #feedbody>
           <div class="feedbody_popup">
           <div style="font-size: 26px; font-weight: bold;">React.js</div>
-          <div>Open source JavaScript library used for designing user interfaces</div>
-          <div>ScoreComponent</div>
+          <div><b>Open source</b> JavaScript library used for designing user interfaces</div>
+          <score />
           </div>
         </template>
       </feed>
@@ -51,6 +51,7 @@ import { topline } from '../../components/topline'
 import { icon } from '../../icons'
 import stories from './data.json'
 import feed from '../../components/feed/feed.vue'
+import score from '../../components/score/score.vue'
 
 export default {
   name: 'feeds',
@@ -58,7 +59,8 @@ export default {
     topline,
     icon,
     StoryUserItem,
-    feed
+    feed,
+    score
   },
   data () {
     return {
