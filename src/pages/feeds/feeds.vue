@@ -2,7 +2,13 @@
     <div class="topline">
         <topline>
             <template #headline>
-                <div class="icon"><icon name="home" /></div>
+                <div class="topline-logo">
+                  <img alt="Gitogram logo" src="../../assets/gitogram_logo.png" />
+                </div>
+                <div class="topline-icons">
+                  <div class="icon"><icon name="home" /></div>
+                  <div class="icon"><icon name="logout" /></div>
+                </div>
             </template>
             <template #content>
                 <ul class="stories">
@@ -48,11 +54,4 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.icon {
-    color: red;
-    width: 50px;
-}
-</style>
 <style lang="scss" scoped src="./feeds.scss"></style>
