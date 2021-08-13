@@ -20,10 +20,28 @@
                         />
                     </li>
                 </ul>
-                <feed />
-                <feed />
             </template>
         </topline>
+    </div>
+    <div class="user-feeds">
+      <feed>
+        <template #feedbody>
+          <div class="feedbody_popup">
+          <div style="font-size: 26px; font-weight: bold;">Vue.js</div>
+          <div>JavaScript framework for building interactive web applications ⚡</div>
+          <div>ScoreComponent</div>
+          </div>
+        </template>
+      </feed>
+      <feed>
+        <template #feedbody>
+          <div class="feedbody_popup">
+          <div style="font-size: 26px; font-weight: bold;">React.js</div>
+          <div>Open source JavaScript library used for designing user interfaces</div>
+          <div>ScoreComponent</div>
+          </div>
+        </template>
+      </feed>
     </div>
 </template>
 
