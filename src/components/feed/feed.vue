@@ -1,8 +1,8 @@
 <template>
   <div class="feed-head">
     <div class="feed-user-panel">
-      <img src="https://media-exp1.licdn.com/dms/image/C560BAQH9Cnv1weU07g/company-logo_200_200/0/1575479070098?e=2159024400&v=beta&t=QM9VSoWVooxDwCONWh22cw0jBBlBPcBOqAxbZIE18jw" />
-      <div class="username">joshua_I</div>
+      <img :src="reviewData.userpic" />
+      <div class="username">{{ reviewData.username }}</div>
     </div>
   </div>
   <div class="feed-body">
@@ -11,14 +11,17 @@
         <toggler @onToggle="toggle" />
         <div class="comments" v-if="shown">
             <ul class="comments-list">
-                <li class="comments-item" v-for="n in 5" :key="n">
+                <!--<li class="comments-item" v-for="n in 5" :key="n">
                     <comment text="Some text" username="Serj Kek" />
+                </li>-->
+                <li class="comments-item" v-for="issue in reviewData.issues" :key="issue.id">
+                  <comment :text="issue.issue_text" :username="issue.username" />
                 </li>
             </ul>
         </div>
     </div>
   </div>
-  <div class="feed-footer" style="margin-bottom:24px;color: rgba(0, 0, 0, 0.4);font-size:12px;">15 MAY</div>
+  <div class="feed-footer">{{ reviewData.date }}</div>
 </template>
 <script>
 import { comment } from '../comment'
@@ -35,10 +38,14 @@ export default {
       shown: false
     }
   },
+  props: { reviewData: Object },
   methods: {
     toggle (isOpened) {
       this.shown = isOpened
     }
+  },
+  mounted: function () {
+    // console.log(this.reviewData)
   }
 }
 </script>
