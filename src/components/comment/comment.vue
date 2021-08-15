@@ -1,10 +1,10 @@
 <template>
-    <div class="c-comment">
-        <p>
-            <span class="username">{{ username }}</span>
-            {{ text }}
-        </p>
-    </div>
+  <div class="c-comment">
+    <p>
+      <span class="username">{{ username }}</span>
+      <span class="comment-text" v-html="text"></span>
+    </p>
+  </div>
 </template>
 
 <script>

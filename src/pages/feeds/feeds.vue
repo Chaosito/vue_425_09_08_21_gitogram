@@ -1,46 +1,45 @@
 <template>
-    <div class="topline">
-        <topline>
-            <template #headline>
-                <div class="topline-logo">
-                  <img alt="Gitogram logo" src="../../assets/gitogram_logo.png" />
-                </div>
-                <div class="topline-icons">
-                  <div class="icon"><a href="#home"><icon name="home" /></a></div>
-                  <div class="icon"><a href="#profile"><img src="https://cdn1.iconfinder.com/data/icons/web-ui-2/16/UI_Icons_Outline-38-512.png" /></a></div>
-                  <div class="icon"><a href="#logout"><icon name="logout" /></a></div>
-                </div>
-            </template>
-            <template #content>
-                <ul class="stories">
-                    <li class="stories-item" v-for="story in stories" :key="story.id">
-                        <story-user-item
-                            :avatar="story.avatar"
-                            :username="story.username"
-                            @onPress="handlePress(story.id)"
-                        />
-                    </li>
-                </ul>
-            </template>
-        </topline>
-    </div>
-    <div class="user-feeds">
-      <ul class="reviews">
-        <li class="review-item" v-for="review in reviews" :key="review.id">
-          <feed v-bind:review-data="review">
-            <template #feedbody>
-              <div class="feedbody_popup">
+  <div class="topline">
+    <topline>
+      <template #headline>
+        <div class="topline-logo">
+          <img alt="Gitogram logo" src="../../assets/gitogram_logo.png" />
+        </div>
+        <div class="topline-icons">
+          <div class="icon"><a href="#home"><icon name="home" /></a></div>
+          <div class="icon"><a href="#profile"><img src="https://cdn1.iconfinder.com/data/icons/web-ui-2/16/UI_Icons_Outline-38-512.png" /></a></div>
+          <div class="icon"><a href="#logout"><icon name="logout" /></a></div>
+        </div>
+      </template>
+      <template #content>
+        <ul class="stories">
+          <li class="stories-item" v-for="story in stories" :key="story.id">
+            <story-user-item
+              :avatar="story.avatar"
+              :username="story.username"
+              @onPress="handlePress(story.id)"
+            />
+          </li>
+        </ul>
+      </template>
+    </topline>
+  </div>
+  <div class="user-feeds">
+    <ul class="reviews">
+      <li class="review-item" v-for="review in reviews" :key="review.id">
+        <feed v-bind:review-data="review">
+          <template #feedbody>
+            <div class="feedbody_popup">
               <div class="review-title">{{ review.review_title }}</div>
               <div v-html="review.review_desc"></div>
               <score v-bind:review-object="review" @likeClicked="likeClicked" @forkClicked="forkClicked" />
-              </div>
-            </template>
-          </feed>
-        </li>
-      </ul>
-    </div>
+            </div>
+          </template>
+        </feed>
+      </li>
+    </ul>
+  </div>
 </template>
-
 <script>
 import StoryUserItem from '../../components/storyUserItem/storyUserItem.vue'
 import topline from '../../components/topline'

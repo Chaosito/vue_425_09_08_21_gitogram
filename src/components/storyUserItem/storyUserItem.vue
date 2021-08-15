@@ -1,10 +1,10 @@
 <template>
-    <button class="c-story-user-item" @click="$emit('onPress')">
-        <div class="avatar">
-            <img :src="avatar" alt="username avatar" class="img" />
-        </div>
-        <div class="username">{{ username }}</div>
-    </button>
+  <button class="c-story-user-item" @click="$emit('onPress')">
+    <div class="avatar">
+      <img :src="avatar" alt="username avatar" class="img" />
+    </div>
+    <div class="username">{{ username }}</div>
+  </button>
 </template>
 <script>
 export default {

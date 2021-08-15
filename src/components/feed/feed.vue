@@ -11,12 +11,9 @@
         <toggler @onToggle="toggle" />
         <div class="comments" v-if="shown">
             <ul class="comments-list">
-                <!--<li class="comments-item" v-for="n in 5" :key="n">
-                    <comment text="Some text" username="Serj Kek" />
-                </li>-->
-                <li class="comments-item" v-for="issue in reviewData.issues" :key="issue.id">
-                  <comment :text="issue.issue_text" :username="issue.username" />
-                </li>
+              <li class="comments-item" v-for="issue in reviewData.issues" :key="issue.id">
+                <comment :text="issue.issue_text" :username="issue.username" />
+              </li>
             </ul>
         </div>
     </div>

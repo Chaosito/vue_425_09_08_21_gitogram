@@ -1,10 +1,10 @@
 <template>
-    <button :class="['button', { active: isOpened }]" @click="toggle">
-        <span class="text">{{ isOpened ? "Hide" : "View" }} issues</span>
-        <span class="icon">
-            <icon name="triangle" />
-        </span>
-    </button>
+  <button :class="['button', { active: isOpened }]" @click="toggle">
+    <span class="text">{{ isOpened ? "Hide" : "View" }} issues</span>
+    <span class="icon">
+      <icon name="triangle" />
+    </span>
+  </button>
 </template>
 <script>
 import icon from '../icons'

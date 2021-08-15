@@ -1,44 +1,44 @@
 .stories {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .topline-logo {
-    display: inline-block;
+  display: inline-block;
 }
 
 .topline-icons {
-    display: inline-flex;
-    float:right;
-    justify-content: flex-end;
-    align-items: center;
+  display: inline-flex;
+  float:right;
+  justify-content: flex-end;
+  align-items: center;
 
-    a {
-        color: black;
-    }
+  a {
+    color: black;
+  }
 
-    .icon {
-        display: inline-block;
-        margin: 10px;
-        width: 25px;
-    }
+  .icon {
+    display: inline-block;
+    margin: 10px;
+    width: 25px;
+  }
 }
 
 .user-feeds{
-    width: 980px;
-    margin: 20px auto;
+  width: 980px;
+  margin: 20px auto;
 }
 
 // feed-component used this
 .feedbody_popup {
-    padding: 24px 44px 24px 20px;
-    border: 1px solid #F1F1F1;
-    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.07);
-    border-radius: 10px;
-    margin-top: 20px;
+  padding: 24px 44px 24px 20px;
+  border: 1px solid #F1F1F1;
+  box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  margin-top: 20px;
 }
 
 .review-title {
-    font-size: 26px; 
-    font-weight: bold;
+  font-size: 26px; 
+  font-weight: bold;
 }
