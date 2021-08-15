@@ -1,1 +1,1 @@
-export { default as comment } from './comment.vue'
+export { default } from './comment.vue'

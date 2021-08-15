@@ -1,1 +1,1 @@
-export { default as score } from './score.vue'
+export { default } from './score.vue'

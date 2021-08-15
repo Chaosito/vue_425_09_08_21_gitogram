@@ -24,8 +24,8 @@
   <div class="feed-footer">{{ reviewData.date }}</div>
 </template>
 <script>
-import { comment } from '../comment'
-import { toggler } from '../toggler'
+import comment from '../comment'
+import toggler from '../toggler'
 
 export default {
   name: 'feed-item',
