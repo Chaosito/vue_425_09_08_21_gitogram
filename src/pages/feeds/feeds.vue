@@ -6,8 +6,9 @@
                   <img alt="Gitogram logo" src="../../assets/gitogram_logo.png" />
                 </div>
                 <div class="topline-icons">
-                  <div class="icon"><icon name="home" /></div>
-                  <div class="icon"><icon name="logout" /></div>
+                  <div class="icon"><a href="#home"><icon name="home" /></a></div>
+                  <div class="icon"><a href="#profile"><img src="https://cdn1.iconfinder.com/data/icons/web-ui-2/16/UI_Icons_Outline-38-512.png" /></a></div>
+                  <div class="icon"><a href="#logout"><icon name="logout" /></a></div>
                 </div>
             </template>
             <template #content>
