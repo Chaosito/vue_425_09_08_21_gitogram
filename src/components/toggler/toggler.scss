@@ -6,6 +6,9 @@
   .icon {
     width: 10px;
     transform: rotate(180deg);
+    >svg {
+      display: block;
+    }
   }
 
   &.active {

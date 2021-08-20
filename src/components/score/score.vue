@@ -1,6 +1,6 @@
 <template>
   <div class="score-items">
-    <button class="stars-score" v-bind:class="{ active: reviewObject.liked === true }" @click="likeClick">
+    <button class="stars-score" v-bind:class="{ active: isLiked }" @click="likeClick">
       <div class="icon"><icon name="star" /></div> Star
     </button>
     <div class="score-counter">{{ reviewObject.likes }}</div>
@@ -17,13 +17,25 @@ export default {
   components: {
     icon
   },
+  data () {
+    return {
+      thisActiveVal: this.reviewObject.liked
+    }
+  },
   mounted: function () {
     // console.log(this.reviewObject)
   },
   props: { reviewObject: Object },
+  computed: {
+    isLiked () {
+      return this.thisActiveVal
+    }
+  },
   methods: {
     likeClick () {
       // console.log('like clicked', this.reviewObject.id)
+      // this.reviewObject.liked = !this.reviewObject.liked
+      this.thisActiveVal = !this.thisActiveVal
       this.$emit('likeClicked', this.reviewObject.id, this.reviewObject.liked)
     },
     forkClick () {

@@ -1,4 +1,6 @@
 <template>
+  <headline title='ae'><avatar title="User Name" src="https://picsum.photos/50/50" alt="User pic" /></headline>
+
   <div class="topline">
     <topline>
       <template #headline>
@@ -48,6 +50,8 @@ import stories from './data.json'
 import feed from '../../components/feed/feed.vue'
 import score from '../../components/score/score.vue'
 import reviews from './reviews.json'
+import headline from '../../components/headline/headline.vue'
+import avatar from '../../components/avatar/avatar.vue'
 
 export default {
   name: 'feeds',
@@ -56,7 +60,9 @@ export default {
     icon,
     StoryUserItem,
     feed,
-    score
+    score,
+    headline,
+    avatar
   },
   data () {
     return {

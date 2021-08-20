@@ -1,0 +1,21 @@
+.headline-component {
+    background-color: #353882;
+    display: block;
+    margin: 0;
+    padding: 10px;
+    color: #fff
+}
+
+.headline-component > .container > div {
+    display: inline-block;
+    padding-left: 10px;
+}
+
+
+.btns>.btn {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    cursor: pointer;
+    color:lightslategray
+}
