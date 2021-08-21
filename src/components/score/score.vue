@@ -4,7 +4,7 @@
       <div class="icon"><icon name="star" /></div> Star
     </button>
     <div class="score-counter">{{ reviewObject.likes }}</div>
-    <button class="fork-now" @click="forkClick">
+    <button class="fork-now" v-bind="{ forkCount }" @click="forkClick">
       <div class="icon"><icon name="fork" /></div> Fork
     </button>
     <div class="forked-count">{{ reviewObject.forks }}</div>
@@ -19,7 +19,8 @@ export default {
   },
   data () {
     return {
-      thisActiveVal: this.reviewObject.liked
+      thisActiveVal: this.reviewObject.liked,
+      thisForksCount: this.reviewObject.forks
     }
   },
   mounted: function () {
@@ -29,6 +30,9 @@ export default {
   computed: {
     isLiked () {
       return this.thisActiveVal
+    },
+    forkCount () {
+      return this.thisForksCount
     }
   },
   methods: {
@@ -40,6 +44,7 @@ export default {
     },
     forkClick () {
       // console.log('fork clicked')
+      this.thisForksCount++
       this.$emit('forkClicked', this.reviewObject.id)
     }
   }

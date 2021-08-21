@@ -7,16 +7,40 @@ const methods = {
 
 export default {
   title: 'headline',
-  components: { headline }
+  components: { headline },
+  argTypes: {
+    content: {
+      control: { type: 'text' }
+    },
+    title: {
+      control: { type: 'text' }
+    },
+    msgText: {
+      control: { type: 'text' }
+    },
+    logoutText: {
+      control: { type: 'text' }
+    }
+  }
 }
 
-export const defaultView = () => ({
+export const defaultView = (args) => ({
   components: {
     headline
   },
-  template: '<headline @change="onChange" title="Control panel"><h3>Content</h3></headline>',
+  data () {
+    return { args }
+  },
+  template: `<headline v-bind="args" @change="onChange" :title="args.title"><h3>${args.content}</h3></headline>`,
   methods
 })
+
+defaultView.args = {
+  title: 'Control panel',
+  content: 'Content',
+  msgText: 'Сообщения',
+  logoutText: 'Выйти'
+}
 
 defaultView.story = {
   name: 'Стандартный вид'

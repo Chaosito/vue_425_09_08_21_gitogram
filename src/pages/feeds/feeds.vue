@@ -1,5 +1,5 @@
 <template>
-  <headline title='ae'><avatar title="User Name" src="https://picsum.photos/50/50" alt="User pic" /></headline>
+  <headline title='title' msg-text='Сообщения' logout-text='Выйти'><avatar title="User Name" src="https://picsum.photos/50/50" alt="User pic" /></headline>
 
   <div class="topline">
     <topline>

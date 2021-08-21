@@ -4,59 +4,99 @@ export default {
   title: 'Icon',
   components: {
     icon
+  },
+  argTypes: {
+    iconColor: {
+      control: { type: 'color' }
+    }
   }
 }
 
-export const forkView = () => ({
+export const forkView = (args) => ({
   components: {
     icon
   },
-  template: '<span class="icon"><icon name="fork" /></span>'
+  data () {
+    return { args }
+  },
+  template: `<span class="icon" style=""><icon name="fork" style="width:25px; color: ${args.iconColor}" /></span>`
 })
+
+forkView.args = {
+  iconColor: 'red'
+}
 
 forkView.story = {
   name: 'Fork'
 }
 
-export const homeView = () => ({
+export const homeView = (args) => ({
   components: {
     icon
   },
-  template: '<span class="icon"><icon name="home" /></span>'
+  data () {
+    return { args }
+  },
+  template: `<span class="icon" style=""><icon name="home" style="width:25px; color: ${args.iconColor}" /></span>`
 })
+
+homeView.args = {
+  iconColor: 'black'
+}
 
 homeView.story = {
   name: 'Home'
 }
 
-export const logoutView = () => ({
+export const logoutView = (args) => ({
   components: {
     icon
   },
-  template: '<span class="icon"><icon name="logout" /></span>'
+  data () {
+    return { args }
+  },
+  template: `<span class="icon" style=""><icon name="logout" style="width:25px; color: ${args.iconColor}" /></span>`
 })
+
+logoutView.args = {
+  iconColor: 'green'
+}
 
 logoutView.story = {
   name: 'Logout'
 }
 
-export const starView = () => ({
+export const starView = (args) => ({
   components: {
     icon
   },
-  template: '<span class="icon"><icon name="star" /></span>'
+  data () {
+    return { args }
+  },
+  template: `<span class="icon" style=""><icon name="star" style="width:25px; color: ${args.iconColor}" /></span>`
 })
+
+starView.args = {
+  iconColor: 'blue'
+}
 
 starView.story = {
   name: 'Star'
 }
 
-export const triangleView = () => ({
+export const triangleView = (args) => ({
   components: {
     icon
   },
-  template: '<span class="icon"><icon name="triangle" /></span>'
+  data () {
+    return { args }
+  },
+  template: `<span class="icon" style=""><icon name="triangle" style="width:25px; color: ${args.iconColor}" /></span>`
 })
+
+triangleView.args = {
+  iconColor: 'pink'
+}
 
 triangleView.story = {
   name: 'Triangle'

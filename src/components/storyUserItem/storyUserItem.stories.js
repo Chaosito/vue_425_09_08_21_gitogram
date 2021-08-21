@@ -10,20 +10,32 @@ export default {
   title: 'StoryUserItem',
   components: {
     StoryUserItem
+  },
+  argTypes: {
+    userName: {
+      control: { type: 'text' }
+    }
   }
 }
 
-export const defaultView = () => ({
+export const defaultView = (args) => ({
   components: {
     StoryUserItem
   },
+  data () {
+    return { args }
+  },
   template: `<story-user-item
     avatar="https://picsum.photos/200/200"
-    username="Alice"
+    username="${args.userName}"
     @onPress="handlePress(404)"
     />`,
   methods
 })
+
+defaultView.args = {
+  userName: 'Alice'
+}
 
 defaultView.story = {
   name: 'Стандартный вид'

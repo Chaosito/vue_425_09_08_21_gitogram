@@ -6,8 +6,8 @@
             </div>
             <div class="title">{{ title }}</div>
             <div class="btns">
-                <button type="button" class="btn" @click="$emit('change', 'messages')">Сообщения</button>
-                <button type="button" class="btn" @click="$emit('change', 'logout')">Выйти</button>
+                <button type="button" class="btn" @click="$emit('change', 'messages')">{{ msgText }}</button>
+                <button type="button" class="btn" @click="$emit('change', 'logout')">{{ logoutText }}</button>
             </div>
         </div>
     </div>
@@ -16,7 +16,9 @@
 <script>
 export default {
   props: {
-    title: String
+    title: String,
+    msgText: String,
+    logoutText: String
   }
 }
 </script>

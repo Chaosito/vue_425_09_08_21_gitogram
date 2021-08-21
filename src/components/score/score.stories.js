@@ -10,28 +10,57 @@ export default {
   title: 'Score',
   components: {
     score
+  },
+  argTypes: {
+    liked: {
+      control: { type: 'boolean' }
+    },
+    likes: {
+      control: { type: 'number' }
+    },
+    forks: {
+      control: { type: 'number' }
+    }
   }
 }
 
-export const scoreView = () => ({
+export const scoreView = (args) => ({
   components: {
     score
   },
-  template: '<score v-bind:review-object="{id: 11, liked: false, likes:666, forks: 100}" @likeClicked="likeClicked" @forkClicked="forkClicked" />',
+  data () {
+    return { args }
+  },
+  template: `<score v-bind:review-object="{id: 11, liked: ${args.liked}, likes:${args.likes}, forks: ${args.forks}}" @likeClicked="likeClicked" @forkClicked="forkClicked" />`,
   methods
 })
+
+scoreView.args = {
+  liked: false,
+  likes: 100,
+  forks: 200
+}
 
 scoreView.story = {
   name: 'Стандартный вид'
 }
 
-export const scoreLikedView = () => ({
+export const scoreLikedView = (args) => ({
   components: {
     score
   },
-  template: '<score v-bind:review-object="{id: 11, liked: true, likes:666, forks: 100}" @likeClicked="likeClicked" @forkClicked="forkClicked" />',
+  data () {
+    return { args }
+  },
+  template: `<score v-bind:review-object="{id: 11, liked: ${args.liked}, likes:${args.likes}, forks: ${args.forks}}" @likeClicked="likeClicked" @forkClicked="forkClicked" />`,
   methods
 })
+
+scoreLikedView.args = {
+  liked: true,
+  likes: 300,
+  forks: 400
+}
 
 scoreLikedView.story = {
   name: 'Liked'

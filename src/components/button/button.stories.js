@@ -4,6 +4,9 @@ export default {
   title: 'button',
   component: { button },
   argTypes: {
+    text: {
+      control: { type: 'text' }
+    },
     hoverText: {
       control: { type: 'text' }
     }
@@ -15,10 +18,11 @@ export const buttonView = (args) => ({
   data () {
     return { args }
   },
-  template: '<x-button v-bind="args">Following</x-button>'
+  template: `<x-button v-bind="args">${args.text}</x-button>`
 })
 
 buttonView.args = {
+  text: 'Following',
   hoverText: 'UnfollowMe'
 }
 
