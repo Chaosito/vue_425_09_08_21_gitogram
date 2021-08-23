@@ -53,6 +53,22 @@ import reviews from './reviews.json'
 import headline from '../../components/headline/headline.vue'
 import avatar from '../../components/avatar/avatar.vue'
 
+import { getJavascriptRepos } from '../../api/rest/getJavascriptRepos.js'
+
+async function getDataFromGithub () {
+  try {
+    const resp = await getJavascriptRepos()
+    console.log(resp.data)
+    // this.reviews = resp.data
+  } catch (error) {
+    console.log('err', error)
+  } finally {
+    console.log('finally')
+  }
+}
+
+getDataFromGithub()
+
 export default {
   name: 'feeds',
   components: {
