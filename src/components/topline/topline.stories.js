@@ -1,7 +1,7 @@
 import topline from './topline.vue'
 
 export default {
-  title: 'TopLine',
+  title: 'Шапка',
   components: {
     topline
   }

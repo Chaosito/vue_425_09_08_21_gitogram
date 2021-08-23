@@ -1,7 +1,7 @@
 import comment from './comment'
 
 export default {
-  title: 'comment',
+  title: 'Комментарий',
   components: { comment },
   argTypes: {
     username: {

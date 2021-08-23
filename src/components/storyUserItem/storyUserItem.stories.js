@@ -7,7 +7,7 @@ const methods = {
 }
 
 export default {
-  title: 'StoryUserItem',
+  title: 'Пользователь (имя снизу)',
   components: {
     StoryUserItem
   },

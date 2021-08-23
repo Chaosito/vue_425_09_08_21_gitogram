@@ -1,7 +1,7 @@
 import avatar from './avatar.vue'
 
 export default {
-  title: 'Avatar',
+  title: 'Пользователь (имя справа)',
   components: {
     avatar
   },

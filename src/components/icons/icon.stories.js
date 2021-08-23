@@ -1,7 +1,7 @@
 import icon from './icon.vue'
 
 export default {
-  title: 'Icon',
+  title: 'Иконки',
   components: {
     icon
   },

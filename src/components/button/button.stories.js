@@ -1,7 +1,7 @@
 import button from './button.vue'
 
 export default {
-  title: 'button',
+  title: 'Кнопка',
   component: { button },
   argTypes: {
     text: {

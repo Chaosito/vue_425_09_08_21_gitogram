@@ -1,7 +1,7 @@
 import toggler from './toggler.vue'
 
 export default {
-  title: 'Toggler',
+  title: 'Переключатель комментариев',
   components: {
     toggler
   },

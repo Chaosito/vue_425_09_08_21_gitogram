@@ -6,7 +6,7 @@ const methods = {
 }
 
 export default {
-  title: 'headline',
+  title: 'Шапка2',
   components: { headline },
   argTypes: {
     content: {

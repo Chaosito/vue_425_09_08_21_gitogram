@@ -7,7 +7,7 @@ const methods = {
 }
 
 export default {
-  title: 'Score',
+  title: 'Лайки, форки',
   components: {
     score
   },

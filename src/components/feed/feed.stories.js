@@ -2,7 +2,7 @@ import feed from './feed.vue'
 import score from '../score/score.vue'
 
 export default {
-  title: 'feed',
+  title: 'Пост',
   components: {
     feed,
     score

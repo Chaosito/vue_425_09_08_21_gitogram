@@ -1,7 +1,7 @@
 import progressbar from '../../components/progressbar/progressbar.vue'
 
 export default {
-  title: 'progressbar',
+  title: 'Прогрессбар',
   component: progressbar,
   argTypes: {
     onFinish: {
