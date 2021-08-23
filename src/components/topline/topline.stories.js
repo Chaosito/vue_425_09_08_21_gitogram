@@ -4,22 +4,38 @@ export default {
   title: 'Шапка',
   components: {
     topline
+  },
+  argTypes: {
+    headline: {
+      control: { type: 'text' }
+    },
+    content: {
+      control: { type: 'text' }
+    }
   }
 }
 
-export const defaultView = () => ({
+export const defaultView = (args) => ({
   components: {
     topline
   },
+  data () {
+    return { args }
+  },
   template: `<topline>
   <template #headline>
-    Headline
+    ${args.headline}
   </template>
   <template #content>
-    Content
+    ${args.content}
   </template>
 </topline>`
 })
+
+defaultView.args = {
+  headline: 'Headline',
+  content: 'Content'
+}
 
 defaultView.story = {
   name: 'Стандартный вид'
