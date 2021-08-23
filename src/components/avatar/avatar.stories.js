@@ -4,37 +4,46 @@ export default {
   title: 'Avatar',
   components: {
     avatar
+  },
+  argTypes: {
+    userName: {
+      control: { type: 'text' }
+    }
   }
 }
 
-export const defaultView = () => ({
+export const defaultView = (args) => ({
   components: {
     avatar
   },
-  template: '<avatar title="User Name" src="https://picsum.photos/50/50" alt="User pic" />'
+  data () {
+    return { args }
+  },
+  template: `<avatar title="${args.userName}" src="https://picsum.photos/50/50" alt="User pic" />`
 })
 
 defaultView.story = {
   name: 'Стандартный вид'
 }
 
-export const borderedView = () => ({
+defaultView.args = {
+  userName: 'Alice'
+}
+
+export const borderedView = (args) => ({
   components: {
     avatar
   },
-  template: '<avatar title="User Name" src="https://picsum.photos/50/50" alt="User pic" active />'
+  data () {
+    return { args }
+  },
+  template: `<avatar title="${args.userName}" src="https://picsum.photos/50/50" alt="User pic" active />`
 })
+
+borderedView.args = {
+  userName: 'Johnson'
+}
 
 borderedView.story = {
   name: 'Граница'
-}
-
-export const nonDefaultView = () => ({
-  template: `
-    <h1 style="color:red;">Hello2!</h1>
-    `
-})
-
-nonDefaultView.story = {
-  name: 'Нестандартный вид'
 }

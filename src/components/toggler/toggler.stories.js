@@ -19,7 +19,7 @@ export const defaultView = (args) => ({
   data () {
     return { args }
   },
-  template: '<toggler @onToggle="toggle" />'
+  template: `<toggler v-bind:is-opened="${args.isOpened}" @onToggle="toggle" />`
 })
 
 defaultView.args = {
