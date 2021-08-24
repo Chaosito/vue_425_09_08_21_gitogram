@@ -8,6 +8,9 @@ export default {
   argTypes: {
     userName: {
       control: { type: 'text' }
+    },
+    size: {
+      control: { type: 'number' }
     }
   }
 }
@@ -19,15 +22,16 @@ export const defaultView = (args) => ({
   data () {
     return { args }
   },
-  template: `<avatar title="${args.userName}" src="https://picsum.photos/50/50" alt="User pic" />`
+  template: `<avatar title="${args.userName}" size="${args.size}" src="https://picsum.photos/${args.size}/${args.size}" alt="User pic" />`
 })
+
+defaultView.args = {
+  userName: 'Alice',
+  size: 50
+}
 
 defaultView.story = {
   name: 'Стандартный вид'
-}
-
-defaultView.args = {
-  userName: 'Alice'
 }
 
 export const borderedView = (args) => ({
@@ -37,11 +41,12 @@ export const borderedView = (args) => ({
   data () {
     return { args }
   },
-  template: `<avatar title="${args.userName}" src="https://picsum.photos/50/50" alt="User pic" active />`
+  template: `<avatar title="${args.userName}" size="${args.size}" src="https://picsum.photos/${args.size}/${args.size}" alt="User pic" active />`
 })
 
 borderedView.args = {
-  userName: 'Johnson'
+  userName: 'Johnson',
+  size: 50
 }
 
 borderedView.story = {

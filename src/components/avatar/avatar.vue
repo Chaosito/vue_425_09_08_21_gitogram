@@ -1,6 +1,6 @@
 <template>
     <div class="avatar-component">
-        <div :class="['image', {'bordered' : active }]">
+        <div :class="['image', {'bordered' : active }]" :style="style">
             <img v-bind="$attrs">
         </div>
         <div class="username">
@@ -13,7 +13,16 @@
 export default {
   props: {
     title: String,
-    active: Boolean
+    active: Boolean,
+    size: Number
+  },
+  computed: {
+    style () {
+      return {
+        width: this.size + 'px',
+        height: this.size + 'px'
+      }
+    }
   }
 }
 </script>
