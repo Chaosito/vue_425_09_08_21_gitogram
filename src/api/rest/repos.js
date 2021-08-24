@@ -9,7 +9,7 @@ const dtWeekAgo = [
   addZeroes(weekAgo.getDate())
 ].join('-')
 
-export const getJavascriptRepos = (lang = 'javascript') => makeRequest({
+export const getRepos = (lang = 'javascript') => makeRequest({
   url: '/search/repositories',
   params: {
     order: 'desc',

@@ -1,6 +1,4 @@
 <template>
-  <headline title='title' msg-text='Сообщения' logout-text='Выйти'><avatar title="User Name" src="https://picsum.photos/50/50" alt="User pic" /></headline>
-
   <div class="topline">
     <topline>
       <template #headline>
@@ -28,7 +26,8 @@
   </div>
   <div class="user-feeds">
     <ul class="reviews">
-      <li class="review-item" v-for="review in reviews" :key="review.id">
+
+      <!--<li class="review-item" v-for="review in reviews" :key="review.id">
         <feed v-bind:review-data="review">
           <template #feedbody>
             <div class="feedbody_popup">
@@ -38,7 +37,20 @@
             </div>
           </template>
         </feed>
+      </li>-->
+
+      <li class="review-item" v-for="item in items" :key="item.id">
+        <feed v-bind:review-data="getFeedData(item)">
+          <template #feedbody>
+            <div class="feedbody_popup">
+              <div class="review-title">{{ item.name }}</div>
+              <div v-html="item.description"></div>
+              <score v-bind:review-object="getFeedData(item)" @likeClicked="likeClicked" @forkClicked="forkClicked" />
+            </div>
+          </template>
+        </feed>
       </li>
+
     </ul>
   </div>
 </template>
@@ -50,24 +62,7 @@ import stories from './data.json'
 import feed from '../../components/feed/feed.vue'
 import score from '../../components/score/score.vue'
 import reviews from './reviews.json'
-import headline from '../../components/headline/headline.vue'
-import avatar from '../../components/avatar/avatar.vue'
-
-import { getJavascriptRepos } from '../../api/rest/getJavascriptRepos.js'
-
-async function getDataFromGithub () {
-  try {
-    const resp = await getJavascriptRepos()
-    console.log(resp.data)
-    // this.reviews = resp.data
-  } catch (error) {
-    console.log('err', error)
-  } finally {
-    console.log('finally')
-  }
-}
-
-getDataFromGithub()
+import * as api from '../../api'
 
 export default {
   name: 'feeds',
@@ -76,14 +71,13 @@ export default {
     icon,
     StoryUserItem,
     feed,
-    score,
-    headline,
-    avatar
+    score
   },
   data () {
     return {
       stories,
-      reviews
+      reviews,
+      items: []
     }
   },
   methods: {
@@ -111,6 +105,46 @@ export default {
       if (curRow) {
         curRow.forks++
       }
+    },
+    getFeedData (item) {
+      return {
+        id: item.id,
+        username: item.owner.login,
+        userpic: item.owner.avatar_url,
+        review_title: item.name,
+        review_desc: item.description,
+        liked: false,
+        likes: item.stargazers_count,
+        forked: item.fork,
+        forks: item.forks_count,
+        date: item.created_at,
+        issues: [
+          {
+            id: 1,
+            username: 'Tony',
+            issue_text: 'Comment #1 from vue'
+          },
+          {
+            id: 2,
+            username: 'Serj_kek',
+            issue_text: 'Issue for vue from serj_kek'
+          },
+          {
+            id: 3,
+            username: 'Anonymouse',
+            issue_text: 'Another comment'
+          }
+        ]
+      }
+    }
+  },
+  async created () {
+    try {
+      const { data } = await api.repos.getRepos()
+      this.items = data.items
+      // console.log(this.items)
+    } catch (error) {
+      console.log('err', error)
     }
   }
 }
