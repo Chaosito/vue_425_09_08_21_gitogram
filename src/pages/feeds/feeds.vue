@@ -13,13 +13,23 @@
       </template>
       <template #content>
         <ul class="stories">
-          <li class="stories-item" v-for="story in stories" :key="story.id">
+
+          <!--<li class="stories-item" v-for="story in stories" :key="story.id">
             <story-user-item
               :avatar="story.avatar"
               :username="story.username"
               @onPress="handlePress(story.id)"
             />
+          </li>-->
+
+          <li class="stories-item" v-for="item in items" :key="item.id">
+            <story-user-item
+              :avatar="item.owner.avatar_url"
+              :username="item.owner.login"
+              @onPress="handlePress(item.id)"
+            />
           </li>
+
         </ul>
       </template>
     </topline>
@@ -27,7 +37,7 @@
   <div class="user-feeds">
     <ul class="reviews">
 
-      <!--<li class="review-item" v-for="review in reviews" :key="review.id">
+      <li class="review-item" v-for="review in reviews" :key="review.id">
         <feed v-bind:review-data="review">
           <template #feedbody>
             <div class="feedbody_popup">
@@ -37,9 +47,9 @@
             </div>
           </template>
         </feed>
-      </li>-->
+      </li>
 
-      <li class="review-item" v-for="item in items" :key="item.id">
+      <!--<li class="review-item" v-for="item in items" :key="item.id">
         <feed v-bind:review-data="getFeedData(item)">
           <template #feedbody>
             <div class="feedbody_popup">
@@ -49,7 +59,7 @@
             </div>
           </template>
         </feed>
-      </li>
+      </li>-->
 
     </ul>
   </div>
@@ -82,7 +92,8 @@ export default {
   },
   methods: {
     handlePress (val) {
-      console.log(val, stories.filter(story => story.id === val)[0])
+      // console.log(val, stories.filter(story => story.id === val)[0])
+      console.log(val, this.items.filter(item => item.id === val)[0])
     },
     likeClicked (elId, elLiked) {
       // console.log('like', elId, elLiked)
