@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     // ...mapActions({
-    //   fetchTrendings: "trendings/fetchTrendinigs"
+    //   fetchTrendings: 'trendings/fetchTrendinigs'
     // }),
     getStoryData (obj) {
       return {
@@ -36,7 +36,7 @@ export default {
     }
   },
   async created () {
-  //   await this.fetchTrendings()
+    // await this.fetchTrendings()
   }
 }
 </script>

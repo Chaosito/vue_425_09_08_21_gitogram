@@ -6,7 +6,7 @@
             <logo color="white" />
         </button>
         <div class="topline-icons">
-            <button class="logo" @click="$router.push('/')">
+            <button class="logo" @click="$router.go('-1')">
                 <div class="icon"><icon color="white" name="close" /></div>
             </button>
         </div>
@@ -14,13 +14,6 @@
     </topline>
   </div>
   <div class="wrapper">
-      <header class="header">
-          <div class="x-container">
-              <button class="close-btn" @click="$router.push('/')">
-                  <icon name="close" />
-              </button>
-          </div>
-      </header>
       <div class="content">
           <stories-slider />
       </div>
