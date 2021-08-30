@@ -101,3 +101,39 @@ triangleView.args = {
 triangleView.story = {
   name: 'Triangle'
 }
+
+export const closeView = (args) => ({
+  components: {
+    icon
+  },
+  data () {
+    return { args }
+  },
+  template: `<span class="icon" style=""><icon name="close" style="width:25px; color: ${args.iconColor}" /></span>`
+})
+
+closeView.args = {
+  iconColor: 'black'
+}
+
+closeView.story = {
+  name: 'Close'
+}
+
+export const spinView = (args) => ({
+  components: {
+    icon
+  },
+  data () {
+    return { args }
+  },
+  template: `<span class="icon" style=""><icon name="spin" style="width:25px; color: ${args.iconColor}" /></span>`
+})
+
+spinView.args = {
+  iconColor: 'black'
+}
+
+spinView.story = {
+  name: 'Spin'
+}

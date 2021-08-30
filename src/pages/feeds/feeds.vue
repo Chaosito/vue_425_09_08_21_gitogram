@@ -3,7 +3,9 @@
     <topline>
       <template #headline>
         <div class="topline-logo">
-          <img alt="Gitogram logo" src="../../assets/gitogram_logo.png" />
+          <button class="logo" @click="$router.push('/')">
+              <logo color="black" />
+          </button>
         </div>
         <div class="topline-icons">
           <div class="icon"><a href="#home"><icon name="home" /></a></div>
@@ -73,6 +75,7 @@ import feed from '../../components/feed/feed.vue'
 import score from '../../components/score/score.vue'
 import reviews from './reviews.json'
 import * as api from '../../api'
+import logo from '../../components/logo'
 
 export default {
   name: 'feeds',
@@ -81,7 +84,8 @@ export default {
     icon,
     StoryUserItem,
     feed,
-    score
+    score,
+    logo
   },
   data () {
     return {
@@ -94,6 +98,7 @@ export default {
     handlePress (val) {
       // console.log(val, stories.filter(story => story.id === val)[0])
       console.log(val, this.items.filter(item => item.id === val)[0])
+      this.$router.push('/stories')
     },
     likeClicked (elId, elLiked) {
       // console.log('like', elId, elLiked)

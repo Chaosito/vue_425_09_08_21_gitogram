@@ -1,0 +1,73 @@
+<template>
+  <div class="topline">
+    <topline>
+      <template #headline>
+        <button class="logo" @click="$router.push('/')">
+            <logo color="white" />
+        </button>
+        <div class="topline-icons">
+            <button class="logo" @click="$router.push('/')">
+                <div class="icon"><icon color="white" name="close" /></div>
+            </button>
+        </div>
+      </template>
+    </topline>
+  </div>
+  <div class="wrapper">
+      <header class="header">
+          <div class="x-container">
+              <button class="close-btn" @click="$router.push('/')">
+                  <icon name="close" />
+              </button>
+          </div>
+      </header>
+      <div class="content">
+          <stories-slider />
+      </div>
+  </div>
+</template>
+
+<script>
+import logo from '../../components/logo'
+// import { icon } from "../../components/icons"
+// todo
+import storiesSlider from '../../components/storiesSlider'
+import topline from '../../components/topline'
+import icon from '../../components/icons'
+
+export default {
+  components: {
+    storiesSlider,
+    topline,
+    icon,
+    logo
+  }
+}
+</script>
+<style lang="scss" scoped>
+.c-topline {
+    background: #000;
+    border:none;
+}
+.wrapper {
+    background: #000;
+}
+.topline-logo {
+  display: inline-block;
+}
+.topline-icons {
+  display: inline-flex;
+  float:right;
+  justify-content: flex-end;
+  align-items: center;
+
+  a {
+    color: black;
+  }
+
+  .icon {
+    margin: 10px;
+    width: 25px;
+  }
+}
+</style>

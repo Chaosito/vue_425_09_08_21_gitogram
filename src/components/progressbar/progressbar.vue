@@ -1,5 +1,5 @@
 <template>
-    <div :class={active} class="c-progress">
+    <div :class="{ active }" class="c-progress">
         <div ref="indicator" class="indicator"></div>
     </div>
 </template>
@@ -21,7 +21,6 @@ export default {
     this.$nextTick(() => {
       this.active = true
     })
-
     this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish)
   },
   beforeUnmount () {
