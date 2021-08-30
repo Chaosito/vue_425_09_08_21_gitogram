@@ -3,10 +3,10 @@
         <div class="stories-container">
             <div class="header">
                 <div class="progress">
-                    <progressbar :active="active" />
+                    <progressbar :active="active" @onFinish="$emit('onProgressFinish')" />
                 </div>
                 <div class="user">
-                    <avatar title="React.reposit" :size="32" src="https://picsum.photos/32/32" alt="User pic" />
+                    <avatar :title="data.username" :size="32" :src="data.userAvatar" alt="User pic" />
                 </div>
             </div>
             <div class="content">
@@ -26,12 +26,12 @@
                 <x-button>Follow</x-button>
             </div>
             <template v-if="active">
-                <button class="btn btn-next">
+                <button v-if="buttonsShown.includes('next')" class="btn btn-next" @click="$emit('onNextSlide')">
                     <div class="icon">
                         <icon name="arrow"></icon>
                     </div>
                 </button>
-                <button class="btn btn-prev">
+                <button v-if="buttonsShown.includes('prev')" class="btn btn-prev" @click="$emit('onPrevSlide')">
                     <div class="icon">
                         <icon name="arrow"></icon>
                     </div>
@@ -51,7 +51,7 @@ import avatar from '../avatar'
 import spinner from '../spinner'
 
 export default {
-  name: 'StoryUserItem',
+  name: 'StoryPostItem',
   components: {
     // user,
     xButton: button,
@@ -61,9 +61,17 @@ export default {
     placeholder,
     spinner
   },
+  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish'],
   props: {
     active: Boolean,
     loading: Boolean,
+    buttonsShown: {
+      type: Array,
+      default: () => ['next', 'prev'],
+      validator (value) {
+        return value.every((item) => item === 'next' || item === 'prev')
+      }
+    },
     data: {
       type: Object,
       required: true,

@@ -24,11 +24,19 @@
             />
           </li>-->
 
-          <li class="stories-item" v-for="item in items" :key="item.id">
+          <!-- <li class="stories-item" v-for="item in items" :key="item.id">
             <story-user-item
               :avatar="item.owner.avatar_url"
               :username="item.owner.login"
               @onPress="handlePress(item.id)"
+            />
+          </li> -->
+
+          <li class="stories-item" v-for="item in items" :key="item.id">
+            <story-user-item
+              :avatar="item.owner.avatar_url"
+              :username="item.owner.login"
+              @onPress="$router.push({name: 'stories', params: {initialSlide: item.id}})"
             />
           </li>
 
@@ -156,7 +164,7 @@ export default {
   },
   async created () {
     try {
-      const { data } = await api.repos.getRepos()
+      const { data } = await api.trendings.getTrendings()
       this.items = data.items
       // console.log(this.items)
     } catch (error) {

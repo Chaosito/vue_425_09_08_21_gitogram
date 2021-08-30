@@ -6,9 +6,12 @@
 
 <script>
 export default {
+  props: {
+    active: Boolean
+  },
   data () {
     return {
-      active: false
+    //   active: false
     }
   },
   emits: ['onFinish'],
@@ -19,12 +22,14 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.active = true
+      // this.active = true
+      this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish)
+      console.log('addEventListener: transitionend')
     })
-    this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish)
   },
   beforeUnmount () {
     this.$refs.indicator.removeEventListener('transitionend', this.emitOnFinish)
+    console.log('removeEventListener: transitionend')
   }
 }
 </script>

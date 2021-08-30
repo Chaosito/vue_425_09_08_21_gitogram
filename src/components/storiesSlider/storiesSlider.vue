@@ -1,42 +1,119 @@
 <template>
     <div class="c-stories-slider">
-        <div class="stories-container" style='display:flex'>
-            <story-post-item  />
-            <story-post-item active />
-            <story-post-item  />
+        <div class="stories-container">
+            <ul class="stories" style="transform: translateX(-0px)" ref="slider">
+              <!-- <li class="stories-item">
+                <story-post-item active />
+              </li> -->
+              <li
+              class="stories-item"
+              v-for="(trending, index) in trendings"
+              :key="trending.id"
+              ref="item"
+              >
+                <story-post-item
+                :data="getStoryData(trending)"
+                :active="slideIndex === index"
+                :loading="slideIndex === index && loading"
+                :buttonsShown="activeButtons"
+                @onNextSlide="handleSlide(index + 1)"
+                @onPrevSlide="handleSlide(index - 1)"
+                @onProgressFinish="handleSlide(index + 1)"
+                />
+              </li>
+            </ul>
+            <!-- <story-post-item active />
+            <story-post-item  /> -->
         </div>
     </div>
 </template>
 
 <script>
 import storyPostItem from '../storyPostItem'
-// import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   components: { storyPostItem },
+  props: {
+    initialSlide: {
+      type: Number
+    }
+  },
   data () {
-    return {}
+    return {
+      slideIndex: 0,
+      sliderPosition: 0,
+      loading: false,
+      buttonsShown: true
+    }
   },
   computed: {
-    // ...mapState({
-    //   trendings: state => state.trendings.data
-    // })
+    ...mapState({
+      trendings: state => state.trendings.data
+    }),
+    activeButtons () {
+      if (this.buttonsShown === false) return []
+      if (this.slideIndex === 0) return ['next']
+      if (this.slideIndex === this.trendings.length - 1) return ['prev']
+      return ['next', 'prev']
+    }
   },
   methods: {
-    // ...mapActions({
-    //   fetchTrendings: 'trendings/fetchTrendinigs'
-    // }),
+    ...mapActions({
+      fetchTrendings: 'trendings/fetchTrendinigs',
+      fetchReadme: 'trendings/fetchReadme'
+    }),
+    async fetchReadmeForActiveSlide () {
+      const { id, owner, name } = this.trendings[this.slideIndex]
+      await this.fetchReadme({ id, owner: owner.login, repo: name })
+    },
     getStoryData (obj) {
       return {
         id: obj.id,
         userAvatar: obj.owner?.avatar_url,
-        username: obj.ownter?.login,
+        username: obj.owner?.login,
         content: obj.readme
       }
+    },
+    moveSlider (goToIndex) {
+      const { slider, item } = this.$refs
+      // console.log(slider, item, parseInt(getComputedStyle(item).getPropertyValue('width')))
+      this.slideIndex = goToIndex
+      this.sliderPosition = -(parseInt(getComputedStyle(item).getPropertyValue('width')) * goToIndex)
+      slider.style.transform = `translateX(${this.sliderPosition}px)`
+    },
+    async loadReadme () {
+      this.loading = true
+      this.buttonsShown = false
+      try {
+        await this.fetchReadmeForActiveSlide()
+      } catch (e) {
+        console.log(e)
+        throw e
+      } finally {
+        this.loading = false
+        this.buttonsShown = true
+      }
+    },
+    async handleSlide (goToIndex) {
+      if (goToIndex < 0 || goToIndex >= this.trendings.length) {
+        return false
+      }
+      this.moveSlider(goToIndex)
+      await this.loadReadme()
     }
   },
   async created () {
-    // await this.fetchTrendings()
+    await this.fetchTrendings()
+
+    if (this.initialSlide) {
+      const index = this.trendings.findIndex(item => item.id === this.initialSlide)
+      await this.handleSlide(index)
+    }
+
+    await this.loadReadme()
   }
 }
 </script>
+
+<style lang="scss" scoped src='./storiesSlider.scss'></style>

@@ -15,15 +15,13 @@
   </div>
   <div class="wrapper">
       <div class="content">
-          <stories-slider />
+          <stories-slider :initialSlide="Number($route.params.initialSlide)" />
       </div>
   </div>
 </template>
 
 <script>
 import logo from '../../components/logo'
-// import { icon } from "../../components/icons"
-// todo
 import storiesSlider from '../../components/storiesSlider'
 import topline from '../../components/topline'
 import icon from '../../components/icons'

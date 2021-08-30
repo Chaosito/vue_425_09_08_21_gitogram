@@ -35,10 +35,10 @@ export default {
     ...mapState({
       user: state => state.user.user
     }),
-    ...mapGetters({
-      isFemale: 'user/getUserIsFemale',
-      getBmwUsers: 'user/getBmwUsers',
-      getCarUsers: 'user/getCarUsers'
+    ...mapGetters('user', {
+      isFemale: 'getUserIsFemale',
+      getBmwUsers: 'getBmwUsers',
+      getCarUsers: 'getCarUsers'
     })
   },
   methods: {

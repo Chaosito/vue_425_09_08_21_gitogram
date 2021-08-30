@@ -9,6 +9,7 @@ export default [
     component: feeds
   },
   {
+    name: 'stories',
     path: '/stories',
     component: stories
   },

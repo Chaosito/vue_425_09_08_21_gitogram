@@ -6,12 +6,12 @@
 }
 
 .c-story-post-item {
+    transform: scale(0.8);
     max-width: 302px;
     min-width: 302px;
     border: 1px solid #c6c6c8;
     border-radius: 8px;
     background-color: #fff;
-    margin: 12px;
 
     .stories-container {
         .progress,.user {
@@ -69,8 +69,8 @@
 }
 .c-story-post-item {
     &.active {
-        transform: scale(1.1);
-        margin-left: 40px;
-        margin-right: 40px;
+        transform: scale(1);
+        // margin-left: 40px;
+        // margin-right: 40px;
     }
 }
