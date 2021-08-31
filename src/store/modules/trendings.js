@@ -13,6 +13,9 @@ export default {
     },
     getRepoById: (state) => (id) => {
       return state.data.find(item => item.id === id)
+    },
+    getRepos: (state) => {
+      return state.data
     }
   },
   mutations: {
@@ -35,12 +38,15 @@ export default {
     }
   },
   actions: {
-    async fetchTrendinigs ({ commit }) {
+    async fetchTrendinigs ({ commit, getters }) {
       commit('SET_TRENDINGS_LOADING', true)
       commit('SET_TRENDINGS_LOADING_ERROR', '')
       try {
         // const response = await fetch('https://randomuser.me/api')
         // const data = await response.json()
+
+        if (getters.getRepos) return
+        console.warn('getters.repos', getters.getRepos)
 
         const { data } = await api.trendings.getTrendings()
         // this.items = data.items
@@ -60,7 +66,6 @@ export default {
 
       try {
         const { data } = await api.readme.getReadme({ owner, repo })
-        // console.log(data)
         commit('SET_README', { id, content: data })
       } catch (error) {
         console.log('err' + error)

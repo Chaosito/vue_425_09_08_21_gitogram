@@ -1,7 +1,9 @@
 <template>
-  <button class="c-story-user-item" @click="$emit('onPress')">
-    <div class="avatar">
-      <img :src="avatar" alt="username avatar" class="img" />
+  <button class="c-story-user-item" @click="$emit('onPress')" @mouseover="onmover">
+    <div class="avatar-wrapper">
+      <div class="avatar">
+        <img :src="avatar" alt="username avatar" class="img" />
+      </div>
     </div>
     <div class="username">{{ username }}</div>
   </button>

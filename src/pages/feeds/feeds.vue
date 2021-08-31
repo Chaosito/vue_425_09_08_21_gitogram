@@ -15,38 +15,19 @@
       </template>
       <template #content>
         <ul class="stories">
-
-          <!--<li class="stories-item" v-for="story in stories" :key="story.id">
+          <li class="stories-item"  v-for="trending in trendings" :key="trending.id">
             <story-user-item
-              :avatar="story.avatar"
-              :username="story.username"
-              @onPress="handlePress(story.id)"
-            />
-          </li>-->
-
-          <!-- <li class="stories-item" v-for="item in items" :key="item.id">
-            <story-user-item
-              :avatar="item.owner.avatar_url"
-              :username="item.owner.login"
-              @onPress="handlePress(item.id)"
-            />
-          </li> -->
-
-          <li class="stories-item" v-for="item in items" :key="item.id">
-            <story-user-item
-              :avatar="item.owner.avatar_url"
-              :username="item.owner.login"
-              @onPress="$router.push({name: 'stories', params: {initialSlide: item.id}})"
+              :avatar="trending.owner.avatar_url"
+              :username="trending.owner.login"
+              @onPress="$router.push({name: 'stories', params: {initialSlide: trending.id}})"
             />
           </li>
-
         </ul>
       </template>
     </topline>
   </div>
   <div class="user-feeds">
     <ul class="reviews">
-
       <li class="review-item" v-for="review in reviews" :key="review.id">
         <feed v-bind:review-data="review">
           <template #feedbody>
@@ -58,19 +39,6 @@
           </template>
         </feed>
       </li>
-
-      <!--<li class="review-item" v-for="item in items" :key="item.id">
-        <feed v-bind:review-data="getFeedData(item)">
-          <template #feedbody>
-            <div class="feedbody_popup">
-              <div class="review-title">{{ item.name }}</div>
-              <div v-html="item.description"></div>
-              <score v-bind:review-object="getFeedData(item)" @likeClicked="likeClicked" @forkClicked="forkClicked" />
-            </div>
-          </template>
-        </feed>
-      </li>-->
-
     </ul>
   </div>
 </template>
@@ -82,8 +50,8 @@ import stories from './data.json'
 import feed from '../../components/feed/feed.vue'
 import score from '../../components/score/score.vue'
 import reviews from './reviews.json'
-import * as api from '../../api'
 import logo from '../../components/logo'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'feeds',
@@ -102,16 +70,17 @@ export default {
       items: []
     }
   },
+  computed: {
+    ...mapState({
+      trendings: state => state.trendings.data
+    })
+  },
   methods: {
-    handlePress (val) {
-      // console.log(val, stories.filter(story => story.id === val)[0])
-      console.log(val, this.items.filter(item => item.id === val)[0])
-      this.$router.push('/stories')
-    },
+    ...mapActions({
+      fetchTrendings: 'trendings/fetchTrendinigs'
+    }),
     likeClicked (elId, elLiked) {
-      // console.log('like', elId, elLiked)
       const curRow = reviews.find(b => b.id === elId)
-      // console.log(curRow)
       if (curRow) {
         curRow.liked = !elLiked
       }
@@ -120,53 +89,17 @@ export default {
       } else {
         curRow.likes--
       }
-      // console.log(reviews)
     },
     forkClicked (elId) {
-      // console.log('forking..', elId)
       const curRow = reviews.find(b => b.id === elId)
-      // console.log(curRow)
       if (curRow) {
         curRow.forks++
-      }
-    },
-    getFeedData (item) {
-      return {
-        id: item.id,
-        username: item.owner.login,
-        userpic: item.owner.avatar_url,
-        review_title: item.name,
-        review_desc: item.description,
-        liked: false,
-        likes: item.stargazers_count,
-        forked: item.fork,
-        forks: item.forks_count,
-        date: item.created_at,
-        issues: [
-          {
-            id: 1,
-            username: 'Tony',
-            issue_text: 'Comment #1 from vue'
-          },
-          {
-            id: 2,
-            username: 'Serj_kek',
-            issue_text: 'Issue for vue from serj_kek'
-          },
-          {
-            id: 3,
-            username: 'Anonymouse',
-            issue_text: 'Another comment'
-          }
-        ]
       }
     }
   },
   async created () {
     try {
-      const { data } = await api.trendings.getTrendings()
-      this.items = data.items
-      // console.log(this.items)
+      await this.fetchTrendings()
     } catch (error) {
       console.log('err', error)
     }

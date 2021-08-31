@@ -2,9 +2,6 @@
     <div class="c-stories-slider">
         <div class="stories-container">
             <ul class="stories" style="transform: translateX(-0px)" ref="slider">
-              <!-- <li class="stories-item">
-                <story-post-item active />
-              </li> -->
               <li
               class="stories-item"
               v-for="(trending, index) in trendings"
@@ -22,8 +19,6 @@
                 />
               </li>
             </ul>
-            <!-- <story-post-item active />
-            <story-post-item  /> -->
         </div>
     </div>
 </template>
@@ -77,7 +72,6 @@ export default {
     },
     moveSlider (goToIndex) {
       const { slider, item } = this.$refs
-      // console.log(slider, item, parseInt(getComputedStyle(item).getPropertyValue('width')))
       this.slideIndex = goToIndex
       this.sliderPosition = -(parseInt(getComputedStyle(item).getPropertyValue('width')) * goToIndex)
       slider.style.transform = `translateX(${this.sliderPosition}px)`
@@ -109,9 +103,9 @@ export default {
     if (this.initialSlide) {
       const index = this.trendings.findIndex(item => item.id === this.initialSlide)
       await this.handleSlide(index)
+    } else {
+      await this.loadReadme()
     }
-
-    await this.loadReadme()
   }
 }
 </script>
