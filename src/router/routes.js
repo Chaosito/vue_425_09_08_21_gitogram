@@ -1,5 +1,6 @@
 import feeds from '../pages/feeds'
 import stories from '../pages/stories'
+import auth from '../pages/auth'
 import userProfile from '../pages/userProfile'
 import page404 from '../pages/404'
 
@@ -12,6 +13,11 @@ export default [
     name: 'stories',
     path: '/stories',
     component: stories
+  },
+  {
+    name: 'auth',
+    path: '/auth',
+    component: auth
   },
   {
     // path: '/user-profile/:id',
