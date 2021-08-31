@@ -43,7 +43,7 @@
         .btn {
             width: 36px;
             height: 36px;
-            position: relative;
+            position: absolute;
             background-color: #fff;
             border-radius: 50%;
             border: 2px solid black;
@@ -54,12 +54,12 @@
             }
         }
         .btn-prev {
-            left: -90px;
-            top: -300px;
+            left: -50px;
+            top: 250px;
         }
         .btn-next {
-            top: -300px;
-            left: 315px;
+            top: 250px;
+            right: -50px;
             transform:rotate(180deg)
         }
     }

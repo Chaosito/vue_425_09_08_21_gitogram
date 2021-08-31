@@ -97,7 +97,7 @@ export default {
       await this.loadReadme()
     }
   },
-  async created () {
+  async mounted () {
     await this.fetchTrendings()
 
     if (this.initialSlide) {
