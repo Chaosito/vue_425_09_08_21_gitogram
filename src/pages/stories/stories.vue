@@ -35,30 +35,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-.c-topline {
-    background: #000;
-    border:none;
-}
-.wrapper {
-    background: #000;
-}
-.topline-logo {
-  display: inline-block;
-}
-.topline-icons {
-  display: inline-flex;
-  float:right;
-  justify-content: flex-end;
-  align-items: center;
-
-  a {
-    color: black;
-  }
-
-  .icon {
-    margin: 10px;
-    width: 25px;
-  }
-}
-</style>
+<style lang="scss" scoped src="./stories.scss"></style>

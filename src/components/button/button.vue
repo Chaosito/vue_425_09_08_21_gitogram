@@ -27,7 +27,6 @@ export default {
   methods: {
     mOver: function (val) {
       this.upHere = val
-      // console.log('mover' + this.upHere + 'z' + val);
     }
   }
 }

@@ -24,9 +24,6 @@ export default {
       thisForksCount: this.reviewObject.forks
     }
   },
-  mounted: function () {
-    // console.log(this.reviewObject)
-  },
   props: { reviewObject: Object },
   computed: {
     isLiked () {
@@ -41,7 +38,6 @@ export default {
   },
   methods: {
     likeClick () {
-      // console.log('like clicked', this.reviewObject.id)
       this.thisActiveVal = !this.thisActiveVal
 
       if (this.thisActiveVal) {
@@ -53,7 +49,6 @@ export default {
       this.$emit('likeClicked', this.reviewObject.id, this.reviewObject.liked)
     },
     forkClick () {
-      // console.log('fork clicked')
       this.thisForksCount++
       this.$emit('forkClicked', this.reviewObject.id)
     }

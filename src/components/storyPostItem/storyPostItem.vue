@@ -42,7 +42,6 @@
 </template>
 
 <script>
-// import { user } from '../user'
 import button from '../button'
 import progressbar from '../progressbar'
 import icon from '../icons'
@@ -53,7 +52,6 @@ import spinner from '../spinner'
 export default {
   name: 'StoryPostItem',
   components: {
-    // user,
     xButton: button,
     progressbar: progressbar,
     avatar,

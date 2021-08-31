@@ -46,7 +46,6 @@
 import StoryUserItem from '../../components/storyUserItem/storyUserItem.vue'
 import topline from '../../components/topline'
 import icon from '../../components/icons'
-import stories from './data.json'
 import feed from '../../components/feed/feed.vue'
 import score from '../../components/score/score.vue'
 import reviews from './reviews.json'
@@ -65,7 +64,6 @@ export default {
   },
   data () {
     return {
-      stories,
       reviews,
       items: []
     }

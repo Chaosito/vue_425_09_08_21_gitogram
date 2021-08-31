@@ -40,9 +40,6 @@ export default {
     toggle (isOpened) {
       this.shown = isOpened
     }
-  },
-  mounted: function () {
-    // console.log(this.reviewData)
   }
 }
 </script>

@@ -1,25 +1,19 @@
 <template>
-  <!--<div class="c-comment">
-    <p>
-      <span class="username">{{ username }}</span>
-      <span class="comment-text" v-html="text"></span>
-    </p>
-  </div>-->
   <div class="c-slider">
-      <progressbar />
-      <topline>
-        <template #headline>
-          <div class="topline-logo">
-            <avatar title="React.reposit" :size="32" src="https://picsum.photos/32/32" alt="User pic" />
-          </div>
-        </template>
-      </topline>
-      <div class="slider-content">
-        <slot name="slider-content">Content</slot>
-      </div>
-      <div class="slider-bottom">
-        <x-button>follow</x-button>
-      </div>
+    <progressbar />
+    <topline>
+      <template #headline>
+        <div class="topline-logo">
+          <avatar title="React.reposit" :size="32" src="https://picsum.photos/32/32" alt="User pic" />
+        </div>
+      </template>
+    </topline>
+    <div class="slider-content">
+      <slot name="slider-content">Content</slot>
+    </div>
+    <div class="slider-bottom">
+      <x-button>follow</x-button>
+    </div>
   </div>
 </template>
 

@@ -12,9 +12,7 @@ export const defaultView = (args) => ({
   data () {
     return { args }
   },
-  template: `
-  <story-post-item active />
-  `
+  template: `<story-post-item active />`
 })
 
 defaultView.story = {

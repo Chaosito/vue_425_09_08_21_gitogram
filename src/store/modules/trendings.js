@@ -8,9 +8,6 @@ export default {
     error: ''
   },
   getters: {
-    getUserIsFemale (state) {
-      return state.data?.gender === 'female'
-    },
     getRepoById: (state) => (id) => {
       return state.data.find(item => item.id === id)
     },
@@ -42,14 +39,8 @@ export default {
       commit('SET_TRENDINGS_LOADING', true)
       commit('SET_TRENDINGS_LOADING_ERROR', '')
       try {
-        // const response = await fetch('https://randomuser.me/api')
-        // const data = await response.json()
-
         if (getters.getRepos) return
-        console.warn('getters.repos', getters.getRepos)
-
         const { data } = await api.trendings.getTrendings()
-        // this.items = data.items
 
         console.log(data)
         commit('SET_TRENDINGS_DATA', data.items)
@@ -68,7 +59,7 @@ export default {
         const { data } = await api.readme.getReadme({ owner, repo })
         commit('SET_README', { id, content: data })
       } catch (error) {
-        console.log('err' + error)
+        console.log('error', error)
       }
     }
   }

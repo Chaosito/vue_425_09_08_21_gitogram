@@ -10,16 +10,4 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@keyframes spin {
-    from {transform:rotate(0deg);}
-    to {transform:rotate(360deg);}
-}
-svg {
-    animation: spin 2s linear 0s infinite;
-}
-.icon {
-    width: 48px;
-}
-</style>
+<style lang="scss" scoped src="./spinner.scss"></style>
