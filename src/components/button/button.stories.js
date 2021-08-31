@@ -1,7 +1,7 @@
 import button from './button.vue'
 
 export default {
-  title: 'Кнопка',
+  title: 'Button',
   component: { button },
   argTypes: {
     text: {
@@ -27,5 +27,5 @@ buttonView.args = {
 }
 
 buttonView.story = {
-  name: 'Стандартный вид'
+  name: 'Button'
 }

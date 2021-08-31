@@ -7,7 +7,7 @@ const methods = {
 }
 
 export default {
-  title: 'Пользователь (имя снизу)',
+  title: 'storyUserItem',
   components: {
     StoryUserItem
   },
@@ -38,5 +38,5 @@ defaultView.args = {
 }
 
 defaultView.story = {
-  name: 'Стандартный вид'
+  name: 'storyUserItem'
 }

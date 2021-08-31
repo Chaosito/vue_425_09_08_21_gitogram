@@ -6,7 +6,7 @@ const methods = {
 }
 
 export default {
-  title: 'Шапка2',
+  title: 'Headline',
   components: { headline },
   argTypes: {
     content: {
@@ -43,5 +43,5 @@ defaultView.args = {
 }
 
 defaultView.story = {
-  name: 'Стандартный вид'
+  name: 'Headline'
 }

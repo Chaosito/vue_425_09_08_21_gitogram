@@ -1,7 +1,7 @@
 import toggler from './toggler.vue'
 
 export default {
-  title: 'Переключатель комментариев',
+  title: 'Toggler',
   components: {
     toggler
   },
@@ -27,5 +27,5 @@ defaultView.args = {
 }
 
 defaultView.story = {
-  name: 'Стандартный вид'
+  name: 'Toggler'
 }

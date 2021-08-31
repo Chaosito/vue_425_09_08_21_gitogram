@@ -1,7 +1,7 @@
 import progressbar from '../../components/progressbar/progressbar.vue'
 
 export default {
-  title: 'Прогрессбар',
+  title: 'Progressbar',
   component: progressbar,
   argTypes: {
     onFinish: {
@@ -22,5 +22,5 @@ export const defaultView = (args) => ({
 })
 
 defaultView.story = {
-  name: 'Стандартный вид'
+  name: 'Progressbar'
 }

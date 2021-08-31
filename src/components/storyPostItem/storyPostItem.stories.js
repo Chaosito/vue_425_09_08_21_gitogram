@@ -38,5 +38,5 @@ defaultView.args = {
 }
 
 defaultView.story = {
-  name: 'Стандартный вид'
+  name: 'storyPostItem'
 }

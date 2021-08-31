@@ -2,7 +2,7 @@ import feed from './feed.vue'
 import score from '../score/score.vue'
 
 export default {
-  title: 'Пост',
+  title: 'Feed',
   components: {
     feed,
     score
@@ -61,5 +61,5 @@ export const defaultView = () => ({
 })
 
 defaultView.story = {
-  name: 'Стандартный вид'
+  name: 'Feed'
 }

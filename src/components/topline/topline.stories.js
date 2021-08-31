@@ -1,7 +1,7 @@
 import topline from './topline.vue'
 
 export default {
-  title: 'Шапка',
+  title: 'Topline',
   components: {
     topline
   },
@@ -38,5 +38,5 @@ defaultView.args = {
 }
 
 defaultView.story = {
-  name: 'Стандартный вид'
+  name: 'Topline'
 }

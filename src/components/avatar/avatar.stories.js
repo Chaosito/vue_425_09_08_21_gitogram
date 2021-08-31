@@ -1,7 +1,7 @@
 import avatar from './avatar.vue'
 
 export default {
-  title: 'Пользователь (имя справа)',
+  title: 'Avatar',
   components: {
     avatar
   },
@@ -30,10 +30,6 @@ defaultView.args = {
   size: 50
 }
 
-defaultView.story = {
-  name: 'Стандартный вид'
-}
-
 export const borderedView = (args) => ({
   components: {
     avatar
@@ -50,5 +46,5 @@ borderedView.args = {
 }
 
 borderedView.story = {
-  name: 'Граница'
+  name: 'With border'
 }

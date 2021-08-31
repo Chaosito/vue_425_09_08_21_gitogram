@@ -7,7 +7,7 @@ const methods = {
 }
 
 export default {
-  title: 'Лайки, форки',
+  title: 'Score',
   components: {
     score
   },
@@ -24,7 +24,7 @@ export default {
   }
 }
 
-export const scoreView = (args) => ({
+export const defaultView = (args) => ({
   components: {
     score
   },
@@ -35,14 +35,10 @@ export const scoreView = (args) => ({
   methods
 })
 
-scoreView.args = {
+defaultView.args = {
   liked: false,
   likes: 100,
   forks: 200
-}
-
-scoreView.story = {
-  name: 'Стандартный вид'
 }
 
 export const scoreLikedView = (args) => ({

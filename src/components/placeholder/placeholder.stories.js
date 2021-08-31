@@ -1,7 +1,7 @@
 import placeholder from './placeholder.vue'
 
 export default {
-  title: 'placeholder',
+  title: 'Placeholder',
   components: { placeholder },
   argTypes: {
     paragraphs: {
@@ -25,5 +25,5 @@ defaultView.args = {
 }
 
 defaultView.story = {
-  name: 'Стандартный вид'
+  name: 'Placeholder'
 }
