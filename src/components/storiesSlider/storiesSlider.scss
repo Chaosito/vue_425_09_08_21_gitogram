@@ -5,6 +5,10 @@
     left: 50%;
     margin-left: -151px;
     transition: .4s;
+
+    &-item.active {
+        z-index: 1;
+    }
 }
 
 .stories-container {

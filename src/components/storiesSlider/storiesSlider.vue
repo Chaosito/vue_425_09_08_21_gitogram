@@ -4,6 +4,7 @@
             <ul class="stories" style="transform: translateX(-0px)" ref="slider">
               <li
               class="stories-item"
+              :class="{ 'active' : slideIndex === index }"
               v-for="(trending, index) in trendings"
               :key="trending.id"
               ref="item"
