@@ -27,6 +27,7 @@
 import logo from '../../components/logo'
 import button from '../../components/button'
 import icon from '../../components/icons'
+import * as api from '../../api'
 
 const clientId = ''
 const clientSecret = ''
@@ -46,19 +47,6 @@ export default {
       params.append('scope', 'repo:status read:user')
 
       window.location.href = `${githubAuthApi}?${params}`
-
-      //   console.log('ok go')
-      //   try {
-    //   const response = await fetch('https://api.github.com/user', {
-    //     headers: {
-    //       Authorization: `token ${localStorage.getItem('token')}`
-    //     }
-    //   })
-    //   const data = await response.json()
-    //   console.log(data)
-    //   } catch (e) {
-    //     console.log(e)
-    //   }
     }
   },
   async created () {
@@ -66,22 +54,9 @@ export default {
 
     if (code) {
       try {
-        const response = fetch('http://localhost:8000/github', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            clientId,
-            code,
-            clientSecret
-          })
-        })
-
-        const { token } = await response.json()
-        localStorage.setItem('token', token)
-        this.$router.replace({ name: 'feeds' })
-        console.log(token)
+        const data = await api.getToken.getToken({ clientId, code, clientSecret })
+        localStorage.setItem('token', data.data.token)
+        this.$router.replace({ name: 'temp' })
       } catch (e) {
         console.log(e)
       }

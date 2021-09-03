@@ -1,6 +1,7 @@
 import feeds from '../pages/feeds'
 import stories from '../pages/stories'
 import auth from '../pages/auth'
+import temp from '../pages/temp'
 import userProfile from '../pages/userProfile'
 import page404 from '../pages/404'
 
@@ -18,6 +19,11 @@ export default [
     name: 'auth',
     path: '/auth',
     component: auth
+  },
+  {
+    name: 'temp',
+    path: '/temp',
+    component: temp
   },
   {
     // path: '/user-profile/:id',
