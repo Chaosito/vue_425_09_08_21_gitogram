@@ -1,5 +1,18 @@
 # gitogram2
 
+## for develop (serve) create file with app-settings
+.env.local or .env in the root directory
+
+## for production (build) create file
+.env.production.local or .env.production in the root directory
+
+## place in created .env-files your github-app data (ClientId & ClientSecret)
+Like a:
+```
+VUE_APP_GITHUB_AUTH_CLIENT_ID={ID_VAL}
+VUE_APP_GITHUB_AUTH_CLIENT_SECRET={SECRET_VAL}
+```
+
 ## Project setup
 ```
 npm install

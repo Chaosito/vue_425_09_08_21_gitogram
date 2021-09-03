@@ -6,7 +6,7 @@ const client = axios.create({
 })
 
 export const makeRequest = ({
-  url, method = 'get', params = {}, headers = {}, data = {}
+  url, method = 'get', params = {}, headers = { Authorization: `token ${localStorage.getItem('token')}` }, data = {}
 }) => client({ url, method, params, headers, data })
 
 export const addZeroes = (val) => val < 10 ? `0${val}` : val

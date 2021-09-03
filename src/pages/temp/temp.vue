@@ -4,7 +4,7 @@
       <template #headline>
         <div class="topline-logo">
           <button class="logo" @click="$router.push('/')">
-              <logo color="black" />
+            <logo color="black" />
           </button>
         </div>
         <div class="topline-icons">
@@ -25,6 +25,7 @@ import icon from '../../components/icons'
 import logo from '../../components/logo'
 import { mapActions, mapState } from 'vuex'
 import button from '../../components/button'
+import * as api from '../../api'
 
 export default {
   name: 'feeds',
@@ -49,18 +50,8 @@ export default {
       fetchTrendings: 'trendings/fetchTrendinigs'
     }),
     async getUser () {
-      console.log('ok go')
-      try {
-        const response = await fetch('https://api.github.com/user', {
-          headers: {
-            Authorization: `token ${localStorage.getItem('token')}`
-          }
-        })
-        const data = await response.json()
-        console.log(data)
-      } catch (e) {
-        console.log(e)
-      }
+      const data = await api.user.getUser()
+      console.log('api', data)
     }
   },
   async created () {

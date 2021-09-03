@@ -29,8 +29,10 @@ import button from '../../components/button'
 import icon from '../../components/icons'
 import * as api from '../../api'
 
-const clientId = ''
-const clientSecret = ''
+const clientId = process.env.VUE_APP_GITHUB_AUTH_CLIENT_ID
+const clientSecret = process.env.VUE_APP_GITHUB_AUTH_CLIENT_SECRET
+
+// console.log(clientId, clientSecret)
 
 export default {
   components: {
@@ -54,9 +56,10 @@ export default {
 
     if (code) {
       try {
-        const data = await api.getToken.getToken({ clientId, code, clientSecret })
+        const data = await api.auth.getToken({ clientId, code, clientSecret })
         localStorage.setItem('token', data.data.token)
         this.$router.replace({ name: 'temp' })
+        return
       } catch (e) {
         console.log(e)
       }

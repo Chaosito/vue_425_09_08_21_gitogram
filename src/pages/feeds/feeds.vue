@@ -9,8 +9,8 @@
         </div>
         <div class="topline-icons">
           <div class="icon"><a href="#home"><icon name="home" /></a></div>
-          <div class="icon"><a href="#profile"><img src="https://cdn1.iconfinder.com/data/icons/web-ui-2/16/UI_Icons_Outline-38-512.png" /></a></div>
-          <div class="icon"><a href="#logout"><icon name="logout" /></a></div>
+          <div class="icon"><router-link :to="{ name: 'auth' } "><img src="https://cdn1.iconfinder.com/data/icons/web-ui-2/16/UI_Icons_Outline-38-512.png" /></router-link></div>
+          <div class="icon"><a @click="logout" href="#"><icon name="logout" /></a></div>
         </div>
       </template>
       <template #content>
@@ -93,6 +93,11 @@ export default {
       if (curRow) {
         curRow.forks++
       }
+    },
+    logout () {
+      console.log('logout')
+      localStorage.removeItem('token')
+      window.location.reload()
     }
   },
   async created () {
