@@ -8,15 +8,18 @@
           </button>
         </div>
         <div class="topline-icons">
-          <div class="icon"><a href="#home"><icon name="home" /></a></div>
-          <div class="icon"><a href="#profile"><img src="https://cdn1.iconfinder.com/data/icons/web-ui-2/16/UI_Icons_Outline-38-512.png" /></a></div>
-          <div class="icon"><a href="#logout"><icon name="logout" /></a></div>
+          <div class="icon"><router-link :to="{ name: 'root' } "><icon name="home" /></router-link></div>
+          <div :title="this.user?.login" alt="User avatar" class="icon"><router-link :to="{ name: 'auth' } "><img :src="this.user?.avatar_url" style="border-radius:50%;" /></router-link></div>
+          <div class="icon"><a @click="logout" href="#"><icon name="logout" /></a></div>
         </div>
       </template>
     </topline>
   </div>
   <div class="user-feeds">
-    <x-button @click="getUser">asd</x-button>
+    <x-button
+    disabled
+    @click="getUser"
+    >asd</x-button>
   </div>
 </template>
 <script>

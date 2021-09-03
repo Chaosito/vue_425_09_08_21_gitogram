@@ -42,7 +42,7 @@ export default {
         if (getters.getRepos) return
         const { data } = await api.trendings.getTrendings()
 
-        console.log(data)
+        // console.log(data)
         commit('SET_TRENDINGS_DATA', data.items)
       } catch (error) {
         commit('SET_TRENDINGS_LOADING_ERROR', 'Не удалось загрузить данные. ' + error)

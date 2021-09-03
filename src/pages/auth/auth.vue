@@ -54,11 +54,15 @@ export default {
   async created () {
     const code = new URLSearchParams(window.location.search).get('code')
 
+    // console.log(window.location)
+
     if (code) {
       try {
         const data = await api.auth.getToken({ clientId, code, clientSecret })
         localStorage.setItem('token', data.data.token)
-        this.$router.replace({ name: 'temp' })
+        this.$router.replace({ name: 'temp', query: null })
+        // console.log(window.location)
+        window.location.href = window.origin
         return
       } catch (e) {
         console.log(e)

@@ -1,5 +1,5 @@
 <template>
-    <button :class="['c-button', `theme-green`, {'hover-text': upHere}]" :data-hover-text="hoverText" @mouseover="mOver(true)" @mouseleave="mOver(false);">
+    <button :class="['c-button', `theme-${theme}`, {'hover-text': upHere}]" :data-hover-text="hoverText" @mouseover="mOver(true)" @mouseleave="mOver(false);">
         <span class="btn-text">
             <slot></slot>
         </span>
@@ -10,6 +10,15 @@
 export default {
   name: 'Button',
   props: {
+    theme: {
+      type: String
+    },
+    loading: {
+      type: Boolean
+    },
+    disabled: {
+      type: Boolean
+    },
     hoverText: {
       type: String
     }
@@ -28,6 +37,10 @@ export default {
     mOver: function (val) {
       this.upHere = val
     }
+  },
+  created () {
+    console.log(this.theme)
+    console.log(this.loading)
   }
 }
 </script>

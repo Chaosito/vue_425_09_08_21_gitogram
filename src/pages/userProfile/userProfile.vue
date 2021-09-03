@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-      <h1 @click="runMutation">{{ $store.state.user.foo }}</h1>
+      <h1 @click="runMutation">{{ $store.state.randomuser.foo }}</h1>
         <router-link to="/">Home</router-link><br>
         <router-link to="/stories" v-slot="{ route }">
             <span>{{ route.fullPath }}</span>
@@ -17,11 +17,11 @@
         <router-link :to="{ name: 'user-profile' } ">Home</router-link><br>
         <router-view />
         <button @click="getUser">Get a User</button>
-        <div v-if="user.loading">LOADING...</div>
-        <div v-else-if="user.error">
-          {{ user.error }}
+        <div v-if="randomuser.loading">LOADING...</div>
+        <div v-else-if="randomuser.error">
+          {{ randomuser.error }}
         </div>
-        <pre v-else-if="user.data">{{ user.data }}</pre>
+        <pre v-else-if="randomuser.data">{{ randomuser.data }}</pre>
         <div>{{ isFemale }}</div>
     </div>
 </template>
@@ -33,9 +33,9 @@ export default {
   props: ['id'],
   computed: {
     ...mapState({
-      user: state => state.user.user
+      randomuser: state => state.randomuser.randomuser
     }),
-    ...mapGetters('user', {
+    ...mapGetters('randomuser', {
       isFemale: 'getUserIsFemale',
       getBmwUsers: 'getBmwUsers',
       getCarUsers: 'getCarUsers'
@@ -43,10 +43,10 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchUser: 'user/fetchUser'
+      fetchUser: 'randomuser/fetchUser'
     }),
     ...mapMutations({
-      UPDATE_FOO: 'user/UPDATE_FOO'
+      UPDATE_FOO: 'randomuser/UPDATE_FOO'
     }),
     goToUser () {
       this.$router.push('/stories')
@@ -64,7 +64,7 @@ export default {
       })
     },
     runMutation () {
-      // this.$store.user.commit('UPDATE_FOO', 'foo2')
+      // this.$store.randomuser.commit('UPDATE_FOO', 'foo2')
       this.UPDATE_FOO('foo3')
     },
     getUser () {

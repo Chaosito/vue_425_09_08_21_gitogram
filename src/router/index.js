@@ -13,7 +13,7 @@ router.beforeEach(async (to, from, next) => {
   try {
     await api.user.getUser()
     if (authRoute) {
-      next({ path: '/' })
+      next({ name: 'root' })
       return
     }
 

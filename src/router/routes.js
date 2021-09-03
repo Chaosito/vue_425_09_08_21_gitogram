@@ -7,6 +7,7 @@ import page404 from '../pages/404'
 
 export default [
   {
+    name: 'root',
     path: '/',
     component: feeds
   },

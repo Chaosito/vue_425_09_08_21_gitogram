@@ -8,8 +8,8 @@
           </button>
         </div>
         <div class="topline-icons">
-          <div class="icon"><a href="#home"><icon name="home" /></a></div>
-          <div class="icon"><router-link :to="{ name: 'auth' } "><img src="https://cdn1.iconfinder.com/data/icons/web-ui-2/16/UI_Icons_Outline-38-512.png" /></router-link></div>
+          <div class="icon"><router-link :to="{ name: 'root' } "><icon name="home" /></router-link></div>
+          <div :title="this.user?.login" alt="User avatar" class="icon"><router-link :to="{ name: 'auth' } "><img :src="this.user?.avatar_url" style="border-radius:50%;" /></router-link></div>
           <div class="icon"><a @click="logout" href="#"><icon name="logout" /></a></div>
         </div>
       </template>
@@ -70,12 +70,14 @@ export default {
   },
   computed: {
     ...mapState({
-      trendings: state => state.trendings.data
+      trendings: state => state.trendings.data,
+      user: state => state.user.data
     })
   },
   methods: {
     ...mapActions({
-      fetchTrendings: 'trendings/fetchTrendinigs'
+      fetchTrendings: 'trendings/fetchTrendinigs',
+      fetchUser: 'user/fetchUser'
     }),
     likeClicked (elId, elLiked) {
       const curRow = reviews.find(b => b.id === elId)
@@ -95,7 +97,7 @@ export default {
       }
     },
     logout () {
-      console.log('logout')
+      // console.log('logout')
       localStorage.removeItem('token')
       window.location.reload()
     }
@@ -103,6 +105,8 @@ export default {
   async created () {
     try {
       await this.fetchTrendings()
+      await this.fetchUser()
+      // console.log(this.user.login)
     } catch (error) {
       console.log('err', error)
     }

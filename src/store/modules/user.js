@@ -1,60 +1,48 @@
+import * as api from '../../api'
+// {
+// "login": "Chaosito",
+// "id": 4879581,
+// "avatar_url": "https://avatars.githubusercontent.com/u/4879581?v=4"
+// }
+
 export default {
   namespaced: true,
   state: {
-    foo: 'bar',
-    users: [
-      { id: 1, name: 'Ivan', car: 'bmw' },
-      { id: 2, name: 'Serj', car: 'audi' },
-      { id: 3, name: 'Rick', car: 'bmw' }
-    ],
-    user: {
-      data: null,
-      loading: false,
-      error: ''
-    }
+    data: null,
+    loading: false,
+    error: ''
   },
   getters: {
-    getBmwUsers (state) {
-      return state.users.filter(u => u.car === 'bmw')
-    },
-    getCarUsers: (state) => (model) => {
-      return state.users.filter(u => u.car === model)
-    },
-    getUserIsFemale (state) {
-      return state.user.data?.gender === 'female'
+    getUserData: (state) => {
+      return state.data
     }
   },
   mutations: {
-    UPDATE_FOO (state, payload) {
-      state.foo = payload
-    },
     SET_USER_DATA (state, payload) {
-      state.user.data = payload
+      state.data = payload
     },
-    SET_USER_LOADING (state, payload) {
-      state.user.loading = payload
+    SET_USER_DATA_LOADING (state, payload) {
+      state.loading = payload
     },
-    SET_USER_LOADING_ERROR (state, payload) {
-      state.user.error = payload
+    SET_USER_DATA_LOADING_ERROR (state, payload) {
+      state.error = payload
     }
   },
   actions: {
-    fetchMethod (state, payload) {
-      console.log(payload)
-    },
-    async fetchUser ({ commit }) {
-      commit('SET_USER_LOADING', true)
-      commit('SET_USER_LOADING_ERROR', '')
+    async fetchUser ({ commit, getters }) {
+      commit('SET_USER_DATA_LOADING', true)
+      commit('SET_USER_DATA_LOADING_ERROR', '')
       try {
-        const response = await fetch('https://randomuser.me/api')
-        const data = await response.json()
-        console.log(data)
-        commit('SET_USER_DATA', data.results[0])
+        if (getters.getUserData) return
+        const { data } = await api.user.getUser()
+
+        // console.log(data)
+        commit('SET_USER_DATA', data)
       } catch (error) {
-        commit('SET_USER_LOADING_ERROR', 'Не удалось загрузить данные. ' + error)
-        console.log(error)
+        commit('SET_USER_DATA_LOADING_ERROR', 'Не удалось загрузить данные. ' + error)
+        // console.log(error)
       } finally {
-        commit('SET_USER_LOADING', false)
+        commit('SET_USER_DATA_LOADING', false)
       }
     }
   }
