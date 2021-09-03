@@ -14,6 +14,7 @@ router.beforeEach(async (to, from, next) => {
     await api.user.getUser()
     if (authRoute) {
       next({ path: '/' })
+      return
     }
 
     next()
