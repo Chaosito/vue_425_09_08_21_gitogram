@@ -17,6 +17,7 @@
                 @onNextSlide="handleSlide(index + 1)"
                 @onPrevSlide="handleSlide(index - 1)"
                 @onProgressFinish="handleSlide(index + 1)"
+                @onFollow="starRepo"
                 />
               </li>
             </ul>
@@ -57,7 +58,8 @@ export default {
   methods: {
     ...mapActions({
       fetchTrendings: 'trendings/fetchTrendinigs',
-      fetchReadme: 'trendings/fetchReadme'
+      fetchReadme: 'trendings/fetchReadme',
+      starRepo: 'trendings/starRepo'
     }),
     async fetchReadmeForActiveSlide () {
       const { id, owner, name } = this.trendings[this.slideIndex]
@@ -68,7 +70,8 @@ export default {
         id: obj.id,
         userAvatar: obj.owner?.avatar_url,
         username: obj.owner?.login,
-        content: obj.readme
+        content: obj.readme,
+        following: obj.following
       }
     },
     moveSlider (goToIndex) {

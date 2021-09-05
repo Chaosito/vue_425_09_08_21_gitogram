@@ -18,7 +18,7 @@
   <div class="user-feeds">
     <x-button
     disabled
-    @click="getUser"
+    @click="$emit('onFollow')"
     >asd</x-button>
   </div>
 </template>
@@ -43,6 +43,7 @@ export default {
       items: []
     }
   },
+  emits: ['onFollow'],
   computed: {
     ...mapState({
       trendings: state => state.trendings.data

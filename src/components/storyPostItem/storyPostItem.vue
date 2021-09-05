@@ -23,7 +23,10 @@
                 </div>
             </div>
             <div class="button">
-                <x-button>Follow</x-button>
+                <x-button
+                    :loading='data.following.loading'
+                    @click="$emit('onFollow', data.id)"
+                >Follow</x-button>
             </div>
             <template v-if="active">
                 <button v-if="buttonsShown.includes('next')" class="btn btn-next" @click="$emit('onNextSlide')">
@@ -59,7 +62,7 @@ export default {
     placeholder,
     spinner
   },
-  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish'],
+  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish', 'onFollow'],
   props: {
     active: Boolean,
     loading: Boolean,

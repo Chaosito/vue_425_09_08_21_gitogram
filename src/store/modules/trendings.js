@@ -17,7 +17,15 @@ export default {
   },
   mutations: {
     SET_TRENDINGS_DATA (state, payload) {
-      state.data = payload
+      state.data = payload.map(item => {
+        item.following = {
+          status: false,
+          loading: false,
+          error: ''
+        }
+        // console.log(item)
+        return item
+      })
     },
     SET_TRENDINGS_LOADING (state, payload) {
       state.loading = payload
@@ -25,11 +33,23 @@ export default {
     SET_TRENDINGS_LOADING_ERROR (state, payload) {
       state.error = payload
     },
-    SET_README (state, payload) {
+    SET_README: (state, payload) => {
       state.data = state.data.map(repo => {
         if (payload.id === repo.id) {
           repo.readme = payload.content
         }
+        return repo
+      })
+    },
+    SET_FOLLOWING: (state, payload) => {
+      state.data = state.data.map((repo) => {
+        if (payload.id === repo.id) {
+          repo.following = {
+            ...repo.following,
+            ...payload.data
+          }
+        }
+        // console.log(repo)
         return repo
       })
     }
@@ -61,6 +81,19 @@ export default {
       } catch (error) {
         console.log('error', error)
       }
+    },
+    async starRepo ({ commit, getters }, id) {
+      const { name: repo, owner } = getters.getRepoById(id)
+      commit('SET_FOLLOWING', {
+        id,
+        data: {
+          status: false,
+          loading: true,
+          error: ''
+        }
+      })
+
+      console.log('idForStar', id, repo, owner)
     }
   }
 }
