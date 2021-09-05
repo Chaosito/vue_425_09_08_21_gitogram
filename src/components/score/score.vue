@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       thisActiveVal: this.reviewObject.liked,
-      thisLikesCount: this.reviewObject.likes,
+      thisLikesCount: this.reviewObject.stargazers_count,
       thisForksCount: this.reviewObject.forks
     }
   },

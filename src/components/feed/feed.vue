@@ -1,8 +1,8 @@
 <template>
   <div class="feed-head">
     <div class="feed-user-panel">
-      <img :src="reviewData.userpic" />
-      <div class="username">{{ reviewData.username }}</div>
+      <img :src="reviewData.owner.avatar_url" />
+      <div class="username">{{ reviewData.owner.login }}</div>
     </div>
   </div>
   <div class="feed-body">
@@ -18,7 +18,7 @@
         </div>
     </div>
   </div>
-  <div class="feed-footer">{{ reviewData.date }}</div>
+  <div class="feed-footer">{{ reviewData.created_at }}</div>
 </template>
 <script>
 import comment from '../comment'

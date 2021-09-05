@@ -83,7 +83,7 @@ export default {
         console.log('error', error)
       }
     },
-    async starRepo ({ commit, getters }, id) {
+    async likeRepo ({ commit, getters }, id) {
       const { name: repo, owner } = getters.getRepoById(id)
       commit('SET_FOLLOWING', {
         id,
@@ -119,6 +119,43 @@ export default {
       }
 
       console.log('idForStar', id, repo, owner)
+    },
+    async dislikeRepo ({ commit, getters }, id) {
+      const { name: repo, owner } = getters.getRepoById(id)
+      commit('SET_FOLLOWING', {
+        id,
+        data: {
+          status: true,
+          loading: true,
+          error: ''
+        }
+      })
+      try {
+        await api.starred.dislikeRepo({ owner: owner.login, repo })
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            status: false
+          }
+        })
+      } catch (e) {
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            status: true,
+            error: e
+          }
+        })
+      } finally {
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            loading: false
+          }
+        })
+      }
+
+      console.log('idForUnStar', id, repo, owner)
     }
   }
 }

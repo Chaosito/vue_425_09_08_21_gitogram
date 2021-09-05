@@ -28,7 +28,21 @@
   </div>
   <div class="user-feeds">
     <ul class="reviews">
-      <li class="review-item" v-for="review in reviews" :key="review.id">
+      <!-- <h1 v-for="review in starred" :key="review.id">{{ review.id }}</h1> -->
+
+      <li class="review-item" v-for="review in starred" :key="review.id">
+        <feed v-bind:review-data="review">
+          <template #feedbody>
+            <div class="feedbody_popup">
+              <div class="review-title">{{ review.name }}</div>
+              <div v-html="review.description"></div>
+              <score v-bind:review-object="review" @likeClicked="likeClicked" @forkClicked="forkClicked" />
+            </div>
+          </template>
+        </feed>
+      </li>
+
+      <!-- <li class="review-item" v-for="review in reviews" :key="review.id">
         <feed v-bind:review-data="review">
           <template #feedbody>
             <div class="feedbody_popup">
@@ -38,7 +52,8 @@
             </div>
           </template>
         </feed>
-      </li>
+      </li> -->
+
     </ul>
   </div>
 </template>
@@ -48,7 +63,7 @@ import topline from '../../components/topline'
 import icon from '../../components/icons'
 import feed from '../../components/feed/feed.vue'
 import score from '../../components/score/score.vue'
-import reviews from './reviews.json'
+// import reviews from './reviews.json'
 import logo from '../../components/logo'
 import { mapActions, mapState } from 'vuex'
 
@@ -64,37 +79,41 @@ export default {
   },
   data () {
     return {
-      reviews,
+      // reviews,
       items: []
     }
   },
   computed: {
     ...mapState({
       trendings: state => state.trendings.data,
-      user: state => state.user.data
+      user: state => state.user.data,
+      starred: state => state.starred.data
     })
   },
   methods: {
     ...mapActions({
       fetchTrendings: 'trendings/fetchTrendinigs',
-      fetchUser: 'user/fetchUser'
+      fetchUser: 'user/fetchUser',
+      fetchUserStarred: 'starred/fetchUserStarred'
     }),
     likeClicked (elId, elLiked) {
-      const curRow = reviews.find(b => b.id === elId)
-      if (curRow) {
-        curRow.liked = !elLiked
-      }
-      if (!elLiked) {
-        curRow.likes++
-      } else {
-        curRow.likes--
-      }
+      console.log('likeClicked')
+      // const curRow = reviews.find(b => b.id === elId)
+      // if (curRow) {
+      //   curRow.liked = !elLiked
+      // }
+      // if (!elLiked) {
+      //   curRow.likes++
+      // } else {
+      //   curRow.likes--
+      // }
     },
     forkClicked (elId) {
-      const curRow = reviews.find(b => b.id === elId)
-      if (curRow) {
-        curRow.forks++
-      }
+      console.log('forkClicked')
+      // const curRow = reviews.find(b => b.id === elId)
+      // if (curRow) {
+      //   curRow.forks++
+      // }
     },
     logout () {
       // console.log('logout')
@@ -106,6 +125,8 @@ export default {
     try {
       await this.fetchTrendings()
       await this.fetchUser()
+      await this.fetchUserStarred({ limit: 10 })
+      console.log(this.starred)
       // console.log(this.user.login)
     } catch (error) {
       console.log('err', error)

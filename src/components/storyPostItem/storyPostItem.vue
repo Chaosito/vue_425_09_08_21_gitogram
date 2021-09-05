@@ -27,7 +27,7 @@
                 <x-button disabled
                     :theme="data.following.status ? 'gray' : 'green'"
                     :loading='data.following.loading'
-                    @click="$emit(data.following.status ? 'onUnfollow' : 'onFollow', data.id)"
+                    @click="data.following.loading ? '' : $emit(data.following.status ? 'onUnfollow' : 'onFollow', data.id)"
                 >{{ data.following.status ? 'Unfollow' : 'Follow' }}</x-button>
             </div>
             <template v-if="active">
