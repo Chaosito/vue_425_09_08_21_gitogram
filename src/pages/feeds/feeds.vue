@@ -7,7 +7,7 @@
               <logo color="black" />
           </button>
         </div>
-        <div class="topline-icons">
+        <div class="topline-icons" v-if="isLogged">
           <div class="icon"><router-link :to="{ name: 'root' } "><icon name="home" /></router-link></div>
           <div :title="this.user?.login" alt="User avatar" class="icon"><router-link :to="{ name: 'auth' } "><img :src="this.user?.avatar_url" style="border-radius:50%;" /></router-link></div>
           <div class="icon"><a @click="logout" href="#"><icon name="logout" /></a></div>
@@ -15,7 +15,7 @@
       </template>
       <template #content>
         <ul class="stories">
-          <li class="stories-item"  v-for="trending in getUnstarredOnly" :key="trending.id">
+          <li class="stories-item" v-for="trending in getUnstarredOnly" :key="trending.id">
             <story-user-item
               :avatar="trending.owner.avatar_url"
               :username="trending.owner.login"
@@ -89,6 +89,9 @@ export default {
       user: state => state.user.data,
       starred: state => state.starred.data
     }),
+    ...mapGetters({
+      isLogged: 'user/isLogged'
+    }),
     ...mapGetters(['getUnstarredOnly'])
   },
   methods: {
@@ -123,9 +126,10 @@ export default {
       await this.fetchTrendings()
       await this.fetchUser()
       await this.fetchUserStarred({ limit: 10 })
-      console.log(this.starred)
-      console.log(this.getUnstarredOnly)
+      // console.log(this.starred)
+      // console.log(this.getUnstarredOnly)
       // console.log(this.user.login)
+      // console.log('22222222', this.isLogged)
     } catch (error) {
       console.log('err', error)
     }

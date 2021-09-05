@@ -31,9 +31,13 @@ export default {
       commit('SET_STARRED_LOADING', true)
       commit('SET_STARRED_LOADING_ERROR', '')
       try {
-        console.log(1)
-        if (getters.getRepos) return
-        console.log(2)
+        /*
+        Следующая проверка предовратит все последующие запросы к серверу, но, если мы лайкнем rep в сториз,
+        то он не появится на главной, так что либо не использовать эту проверку, либо пушить реп в store.starred из
+        store.trendings (у них вродь одинаковая структура), тем самым избежав запроса на сервер,
+        но тогда можно столкнутся с рассинхроном
+        */
+        // if (getters.getRepos) return
         const { data } = await api.starred.getStarredRepos({ limit })
         commit('SET_STARRED_DATA', data)
         // console.log(data)

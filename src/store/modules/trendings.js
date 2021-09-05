@@ -118,7 +118,7 @@ export default {
         })
       }
 
-      console.log('idForStar', id, repo, owner)
+      // console.log('idForStar', id, repo, owner)
     },
     async dislikeRepo ({ commit, getters }, id) {
       const { name: repo, owner } = getters.getRepoById(id)
@@ -155,7 +155,7 @@ export default {
         })
       }
 
-      console.log('idForUnStar', id, repo, owner)
+      // console.log('idForUnStar', id, repo, owner)
     }
   }
 }

@@ -15,6 +15,9 @@ export default {
   getters: {
     getUserData: (state) => {
       return state.data
+    },
+    isLogged: (state) => {
+      return state.data !== null
     }
   },
   mutations: {

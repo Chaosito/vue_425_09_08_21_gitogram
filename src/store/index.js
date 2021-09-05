@@ -8,7 +8,9 @@ import auth from './modules/auth'
 export default createStore({
   getters: {
     getUnstarredOnly (state) {
-      return state.trendings.data.filter((trendingRepos) => !state.starred.data.some((starredRepo) => trendingRepos.id === starredRepo.id))
+      if (state.trendings.data !== null && state.starred.data != null) {
+        return state.trendings.data.filter((trendingRepos) => !state.starred.data.some((starredRepo) => trendingRepos.id === starredRepo.id))
+      }
     }
   },
   modules: {

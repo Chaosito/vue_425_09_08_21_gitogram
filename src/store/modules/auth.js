@@ -8,7 +8,7 @@ export default {
       api.auth.goToAuthPage()
     },
     async authUserByCode (store, code) {
-      console.log(code)
+      // console.log(code)
       const { data } = await api.auth.getTokenByCode(code)
       return data.token
     },
