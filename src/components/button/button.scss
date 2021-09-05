@@ -8,15 +8,22 @@
     height: 100%;
 
     &:hover{
-        background-color: gray;
+        // background-color: gray;
+        opacity: .8;
     }
 }
 
 .theme {
-    &-green {
-        background-color: #00C832;
-    }
+    cursor: pointer;
+    // &-green {
+    //     background-color: #00C832;
+    // }
     &-gray {
+        cursor: default;
         background-color: gray;
     }
+}
+
+.btn-text .icon {
+    display: inline-block;
 }

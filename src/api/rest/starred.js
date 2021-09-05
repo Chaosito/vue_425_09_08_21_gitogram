@@ -11,9 +11,16 @@ export const getStarredRepos = ({ limit }) => {
   })
 }
 
+// const contentHeader = 'application/vnd.github.v3.html+json'
+// /user/starred/{owner}/{repo}
+
 export const likeRepo = ({ repo, owner }) => makeRequest({
   url: `/user/starred/${owner}/${repo}`,
-  method: 'PUT'
+  method: 'put',
+  headers: {
+    Authorization: `token ${localStorage.getItem('token')}`,
+    accept: 'application/vnd.github.v3.html+json'
+  }
 })
 
 export const dislikeRepo = ({ repo, owner }) => makeRequest({

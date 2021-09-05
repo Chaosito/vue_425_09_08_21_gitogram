@@ -7,8 +7,8 @@ export default {
     text: {
       control: { type: 'text' }
     },
-    hoverText: {
-      control: { type: 'text' }
+    loading: {
+      control: { type: 'boolean' }
     }
   }
 }
@@ -21,11 +21,5 @@ export const buttonView = (args) => ({
   template: `<x-button v-bind="args">${args.text}</x-button>`
 })
 
-buttonView.args = {
-  text: 'Following',
-  hoverText: 'UnfollowMe'
-}
-
-buttonView.story = {
-  name: 'Button'
-}
+buttonView.args = { text: 'Following', loading: false }
+buttonView.story = { name: 'Button' }

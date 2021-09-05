@@ -1,46 +1,24 @@
 <template>
-    <button :class="['c-button', `theme-${theme}`, {'hover-text': upHere}]" :data-hover-text="hoverText" @mouseover="mOver(true)" @mouseleave="mOver(false);">
+    <button :class="['c-button', `theme-${theme}`]">
         <span class="btn-text">
-            <slot></slot>
+          <spinner v-if='loading' />
+            <slot v-else></slot>
         </span>
     </button>
 </template>
 
 <script>
+import spinner from '../spinner'
+
 export default {
   name: 'Button',
+  components: {
+    spinner
+  },
   props: {
-    theme: {
-      type: String
-    },
-    loading: {
-      type: Boolean
-    },
-    disabled: {
-      type: Boolean
-    },
-    hoverText: {
-      type: String
-    }
-  },
-  data () {
-    return {
-      upHere: false
-    }
-  },
-  computed: {
-    withHoverText () {
-      return this.hoverText?.length
-    }
-  },
-  methods: {
-    mOver: function (val) {
-      this.upHere = val
-    }
-  },
-  created () {
-    console.log(this.theme)
-    console.log(this.loading)
+    theme: { type: String },
+    loading: { type: Boolean },
+    disabled: { type: Boolean }
   }
 }
 </script>

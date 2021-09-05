@@ -23,10 +23,12 @@
                 </div>
             </div>
             <div class="button">
-                <x-button
+                <!-- onLoading Disable emits -->
+                <x-button disabled
+                    :theme="data.following.status ? 'gray' : 'green'"
                     :loading='data.following.loading'
-                    @click="$emit('onFollow', data.id)"
-                >Follow</x-button>
+                    @click="$emit(data.following.status ? 'onUnfollow' : 'onFollow', data.id)"
+                >{{ data.following.status ? 'Unfollow' : 'Follow' }}</x-button>
             </div>
             <template v-if="active">
                 <button v-if="buttonsShown.includes('next')" class="btn btn-next" @click="$emit('onNextSlide')">
@@ -62,7 +64,7 @@ export default {
     placeholder,
     spinner
   },
-  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish', 'onFollow'],
+  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish', 'onFollow', 'onUnfollow'],
   props: {
     active: Boolean,
     loading: Boolean,

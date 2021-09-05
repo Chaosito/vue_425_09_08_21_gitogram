@@ -12,6 +12,7 @@ export default {
       return state.data.find(item => item.id === id)
     },
     getRepos: (state) => {
+      // console.log(state)
       return state.data
     }
   },
@@ -92,6 +93,30 @@ export default {
           error: ''
         }
       })
+      try {
+        await api.starred.likeRepo({ owner: owner.login, repo })
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            status: true
+          }
+        })
+      } catch (e) {
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            status: false,
+            error: e
+          }
+        })
+      } finally {
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            loading: false
+          }
+        })
+      }
 
       console.log('idForStar', id, repo, owner)
     }
