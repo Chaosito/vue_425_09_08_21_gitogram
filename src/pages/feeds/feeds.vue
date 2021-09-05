@@ -15,7 +15,7 @@
       </template>
       <template #content>
         <ul class="stories">
-          <li class="stories-item"  v-for="trending in trendings" :key="trending.id">
+          <li class="stories-item"  v-for="trending in getUnstarredOnly" :key="trending.id">
             <story-user-item
               :avatar="trending.owner.avatar_url"
               :username="trending.owner.login"
@@ -65,7 +65,7 @@ import feed from '../../components/feed/feed.vue'
 import score from '../../components/score/score.vue'
 // import reviews from './reviews.json'
 import logo from '../../components/logo'
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'feeds',
@@ -88,13 +88,15 @@ export default {
       trendings: state => state.trendings.data,
       user: state => state.user.data,
       starred: state => state.starred.data
-    })
+    }),
+    ...mapGetters(['getUnstarredOnly'])
   },
   methods: {
     ...mapActions({
       fetchTrendings: 'trendings/fetchTrendinigs',
       fetchUser: 'user/fetchUser',
-      fetchUserStarred: 'starred/fetchUserStarred'
+      fetchUserStarred: 'starred/fetchUserStarred',
+      logout: 'auth/logout'
     }),
     likeClicked (elId, elLiked) {
       console.log('likeClicked')
@@ -114,11 +116,6 @@ export default {
       // if (curRow) {
       //   curRow.forks++
       // }
-    },
-    logout () {
-      // console.log('logout')
-      localStorage.removeItem('token')
-      window.location.reload()
     }
   },
   async created () {
@@ -127,6 +124,7 @@ export default {
       await this.fetchUser()
       await this.fetchUserStarred({ limit: 10 })
       console.log(this.starred)
+      console.log(this.getUnstarredOnly)
       // console.log(this.user.login)
     } catch (error) {
       console.log('err', error)

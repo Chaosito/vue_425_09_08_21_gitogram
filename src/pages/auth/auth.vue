@@ -10,7 +10,7 @@
                     This is our digital world.
                 </div>
                 <div class="gitbtn">
-                    <x-button @click="getCode"><div class="button-text">Authorize with github <div class="icon"><icon name="github" /></div></div></x-button>
+                    <x-button @click="getAuthCode"><div class="button-text">Authorize with github <div class="icon"><icon name="github" /></div></div></x-button>
                 </div>
             </div>
             <div class="right-side">
@@ -27,12 +27,7 @@
 import logo from '../../components/logo'
 import button from '../../components/button'
 import icon from '../../components/icons'
-import * as api from '../../api'
-
-const clientId = process.env.VUE_APP_GITHUB_AUTH_CLIENT_ID
-const clientSecret = process.env.VUE_APP_GITHUB_AUTH_CLIENT_SECRET
-
-// console.log(clientId, clientSecret)
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -41,27 +36,19 @@ export default {
     icon
   },
   methods: {
-    async getCode () {
-      const githubAuthApi = 'https://github.com/login/oauth/authorize'
-
-      const params = new URLSearchParams()
-      params.append('client_id', clientId)
-      params.append('scope', 'public_repo user')
-
-      window.location.href = `${githubAuthApi}?${params}`
-    }
+    ...mapActions({
+      getAuthCode: 'auth/getAuthCode',
+      authUserByCode: 'auth/authUserByCode'
+    })
   },
   async created () {
     const code = new URLSearchParams(window.location.search).get('code')
-
-    // console.log(window.location)
-
     if (code) {
       try {
-        const data = await api.auth.getToken({ clientId, code, clientSecret })
-        localStorage.setItem('token', data.data.token)
+        const token = await this.authUserByCode({ code })
+        console.log(token)
+        localStorage.setItem('token', token)
         this.$router.replace({ name: 'temp', query: null })
-        // console.log(window.location)
         window.location.href = window.origin
         return
       } catch (e) {
@@ -71,5 +58,4 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped src="./auth.scss"></style>
