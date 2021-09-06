@@ -47,6 +47,9 @@ export default [
   },
   {
     path: '/:pathMatch(.*)*',
+    meta: {
+      guestAccess: true
+    },
     component: page404
   }
 ]

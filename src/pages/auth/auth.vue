@@ -48,7 +48,7 @@ export default {
         const token = await this.authUserByCode({ code })
         console.log(token)
         localStorage.setItem('token', token)
-        this.$router.replace({ name: 'temp', query: null })
+        this.$router.replace({ name: 'root', query: null })
         window.location.href = window.origin
         return
       } catch (e) {

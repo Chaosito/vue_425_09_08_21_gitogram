@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import routes from './routes'
-import * as api from '../api'
+import $store from '../store'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -8,23 +8,22 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
+  if (!$store.getters['user/isLogged'] && localStorage.getItem('token')) {
+    if (!await $store.dispatch('user/fetchUser')) {
+      console.log('err dispatch fetchuser')
+    }
+  }
+
+  const isLogged = $store.getters['user/isLogged']
   const authRoute = to.name === 'auth'
 
-  try {
-    await api.user.getUser()
-    if (authRoute) {
-      next({ name: 'root' })
-      return
-    }
-
-    next()
-  } catch (e) {
-    if (authRoute) {
-      next()
-      return
-    }
-
+  console.log('islog3', isLogged)
+  if (!isLogged && !authRoute && !to.meta.guestAccess) {
     next({ name: 'auth' })
+  } else if (isLogged && authRoute) {
+    next({ name: 'root' })
+  } else {
+    next()
   }
 })
 
