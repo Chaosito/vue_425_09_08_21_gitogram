@@ -46,7 +46,7 @@ export default {
     if (code) {
       try {
         const token = await this.authUserByCode({ code })
-        console.log(token)
+        // console.log(token)
         localStorage.setItem('token', token)
         this.$router.replace({ name: 'root', query: null })
         window.location.href = window.origin

@@ -126,10 +126,6 @@ export default {
       await this.fetchTrendings()
       // await this.fetchUser()
       await this.fetchUserStarred({ limit: 10 })
-      console.log(this.starred)
-      // console.log(this.getUnstarredOnly)
-      // console.log(this.user.login)
-      // console.log('22222222', this.isLogged)
     } catch (error) {
       console.log('err', error)
     }

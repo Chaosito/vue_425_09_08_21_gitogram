@@ -17,7 +17,7 @@ router.beforeEach(async (to, from, next) => {
   const isLogged = $store.getters['user/isLogged']
   const authRoute = to.name === 'auth'
 
-  console.log('islog3', isLogged)
+  // console.log('islog3', isLogged)
   if (!isLogged && !authRoute && !to.meta.guestAccess) {
     next({ name: 'auth' })
   } else if (isLogged && authRoute) {

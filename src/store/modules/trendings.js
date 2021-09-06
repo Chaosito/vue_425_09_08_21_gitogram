@@ -12,7 +12,6 @@ export default {
       return state.data.find(item => item.id === id)
     },
     getRepos: (state) => {
-      // console.log(state)
       return state.data
     }
   },
@@ -24,7 +23,6 @@ export default {
           loading: false,
           error: ''
         }
-        // console.log(item)
         return item
       })
     },
@@ -50,7 +48,6 @@ export default {
             ...payload.data
           }
         }
-        // console.log(repo)
         return repo
       })
     }
@@ -62,8 +59,6 @@ export default {
       try {
         if (getters.getRepos) return
         const { data } = await api.trendings.getTrendings()
-
-        // console.log(data)
         commit('SET_TRENDINGS_DATA', data.items)
       } catch (error) {
         commit('SET_TRENDINGS_LOADING_ERROR', 'Не удалось загрузить данные. ' + error)
@@ -117,8 +112,6 @@ export default {
           }
         })
       }
-
-      // console.log('idForStar', id, repo, owner)
     },
     async dislikeRepo ({ commit, getters }, id) {
       const { name: repo, owner } = getters.getRepoById(id)
@@ -154,8 +147,6 @@ export default {
           }
         })
       }
-
-      // console.log('idForUnStar', id, repo, owner)
     }
   }
 }
