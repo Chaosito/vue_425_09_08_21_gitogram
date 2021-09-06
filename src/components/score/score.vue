@@ -1,7 +1,7 @@
 <template>
   <div class="score-items">
     <button class="stars-score" v-bind:class="{ active: isLiked }" @click="likeClick">
-      <div class="icon"><icon name="star" /></div> Star
+      <div class="icon"><icon :name="isLiked ? 'star-filled' : 'star'" /></div> {{ isLiked ? 'Unstar' : 'Star' }}
     </button>
     <div class="score-counter">{{ likeCount }}</div>
     <button class="fork-now" v-bind="{ forkCount }" @click="forkClick">
