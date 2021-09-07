@@ -4,6 +4,7 @@ import auth from '../pages/auth'
 import temp from '../pages/temp'
 import userProfile from '../pages/userProfile'
 import page404 from '../pages/404'
+import profile from '../pages/profile'
 
 export default [
   {
@@ -25,6 +26,11 @@ export default [
     name: 'temp',
     path: '/temp',
     component: temp
+  },
+  {
+    name: 'profile',
+    path: '/profile',
+    component: profile
   },
   {
     // path: '/user-profile/:id',

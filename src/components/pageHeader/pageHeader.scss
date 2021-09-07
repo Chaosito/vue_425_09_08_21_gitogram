@@ -1,0 +1,40 @@
+.c-header {
+  background: #fafafa;
+  border-bottom: 1px solid #c6c6c8;
+  padding: 42px 0 32px;
+
+  .content {
+    margin-top: 37px;
+  }
+  
+  .topline-logo {
+    display: inline-block;
+  }
+  
+  .topline-icons {
+    display: inline-flex;
+    float:right;
+    align-items: cen;
+  
+    a {
+      color: black;
+    }
+  
+    .icon {
+      margin: 10px;
+      width: 25px;
+      &>svg {
+        vertical-align: middle;
+      }
+    }
+  }
+  &.theme-black {
+    background-color: #000;
+    border:none;
+    .topline-icons a {
+      color: white;
+    }
+  }
+}
+
+

@@ -1,0 +1,18 @@
+.topline-logo {
+  display: inline-block;
+}
+
+.topline-icons {
+  display: inline-flex;
+  float:right;
+  align-items: center;
+
+  a {
+    color: black;
+  }
+
+  .icon {
+    margin: 10px;
+    width: 25px;
+  }
+}
