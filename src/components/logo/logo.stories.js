@@ -23,7 +23,7 @@ export const logoView = (args) => ({
 })
 
 logoView.args = {
-  color: 'red'
+  color: 'orange'
 }
 
 logoView.story = {

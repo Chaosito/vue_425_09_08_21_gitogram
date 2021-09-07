@@ -13,10 +13,10 @@ const review = {
   id: 1,
   owner: {
     avatar_url: 'https://cdn1.iconfinder.com/data/icons/web-ui-2/16/UI_Icons_Outline-38-512.png',
+    login: 'joshua_l'
   },
-  username: 'joshua_l',
-  review_title: 'Vue.js',
-  review_desc: '<b>JavaScript</b> framework for building interactive web applications ⚡',
+  name: 'Vue.js',
+  description: '<b>JavaScript</b> framework for building interactive web applications ⚡',
   liked: true,
   stargazers_count: 515,
   forked: true,
@@ -54,15 +54,7 @@ export const defaultView = () => ({
       review: review
     }
   },
-  template: `<feed v-bind:review-data="review">
-  <template #feedbody>
-    <div class="feedbody_popup">
-      <div class="review-title">{{ review.review_title }}</div>
-      <div v-html="review.review_desc"></div>
-      <score v-bind:review-object="review" @likeClicked="likeClicked" @forkClicked="forkClicked" />
-    </div>
-  </template>
-</feed>`
+  template: `<feed v-bind:review-data="review" />`
 })
 
 defaultView.story = {

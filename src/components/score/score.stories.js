@@ -31,7 +31,7 @@ export const defaultView = (args) => ({
   data () {
     return { args }
   },
-  template: `<score v-bind:review-object="{id: 11, liked: ${args.liked}, likes:${args.likes}, forks: ${args.forks}}" @likeClicked="likeClicked" @forkClicked="forkClicked" />`,
+  template: `<score v-bind:review-object="{id: 11, liked: ${args.liked}, stargazers_count:${args.likes}, forks: ${args.forks}}" @likeClicked="likeClicked" @forkClicked="forkClicked" />`,
   methods
 })
 
@@ -48,7 +48,7 @@ export const scoreLikedView = (args) => ({
   data () {
     return { args }
   },
-  template: `<score v-bind:review-object="{id: 11, liked: ${args.liked}, likes:${args.likes}, forks: ${args.forks}}" @likeClicked="likeClicked" @forkClicked="forkClicked" />`,
+  template: `<score v-bind:review-object="{id: 11, liked: ${args.liked}, stargazers_count:${args.likes}, forks: ${args.forks}}" @likeClicked="likeClicked" @forkClicked="forkClicked" />`,
   methods
 })
 
