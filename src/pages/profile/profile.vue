@@ -15,7 +15,10 @@
       </div>
     </div>
     <div class="right-side">
-      <div v-for="n in 44" :key="n">Repositories</div>
+      <router-link :to="{ name: 'profile-repos' }">Repositories</router-link><br>
+      <router-link :to="{ name: 'profile-following' }">Following</router-link>
+      <router-view />
+      <div v-for="n in 2" :key="n">Lorem Ipsum, dolor sit ameit</div>
     </div>
   </div>
 </template>

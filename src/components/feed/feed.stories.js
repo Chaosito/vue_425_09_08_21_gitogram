@@ -54,7 +54,7 @@ export const defaultView = () => ({
       review: review
     }
   },
-  template: `<feed v-bind:review-data="review" />`
+  template: '<feed v-bind:review-data="review" />'
 })
 
 defaultView.story = {

@@ -14,7 +14,7 @@
         <router-link :to="{ name: 'user-profile', params: { id: 555 }, query: { top: 666, bottom: -5 } }">
             asd
         </router-link><br>
-        <router-link :to="{ name: 'user-profile' } ">Home</router-link><br>
+        <router-link :to="{ name: 'user-profile' }">Home</router-link><br>
         <router-view />
         <button @click="getUser">Get a User</button>
         <div v-if="randomuser.loading">LOADING...</div>

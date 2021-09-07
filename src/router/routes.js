@@ -5,6 +5,8 @@ import temp from '../pages/temp'
 import userProfile from '../pages/userProfile'
 import page404 from '../pages/404'
 import profile from '../pages/profile'
+import profileRepos from '../pages/profile/repos'
+import profileFollowing from '../pages/profile/following'
 
 export default [
   {
@@ -30,7 +32,20 @@ export default [
   {
     name: 'profile',
     path: '/profile',
-    component: profile
+    component: profile,
+    props: true,
+    children: [
+      {
+        name: 'profile-repos',
+        path: 'repos',
+        component: profileRepos
+      },
+      {
+        name: 'profile-following',
+        path: 'following',
+        component: profileFollowing
+      }
+    ]
   },
   {
     // path: '/user-profile/:id',
