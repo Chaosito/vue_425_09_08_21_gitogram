@@ -9,21 +9,20 @@
     height: 100%;
 
     &:hover{
-        // background-color: gray;
         opacity: .8;
     }
 }
 
 .loading {
     cursor: progress;
+    padding: 0;
+    .icon {
+        width: 40px;
+    }
 }
 
 .theme {
-    // &-green {
-    //     background-color: #00C832;
-    // }
     &-gray {
-        // cursor: default;
         background-color: gray;
     }
 }

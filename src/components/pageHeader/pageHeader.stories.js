@@ -1,7 +1,7 @@
 import pageHeader from './pageHeader.vue'
 
 export default {
-  title: 'Header',
+  title: 'PageHeader',
   components: {
     pageHeader
   },
@@ -38,5 +38,5 @@ defaultView.args = {
 }
 
 defaultView.story = {
-  name: 'Header'
+  name: 'PageHeader'
 }

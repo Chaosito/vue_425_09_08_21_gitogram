@@ -11,32 +11,37 @@ export default {
 
 const review = {
   id: 1,
+  owner: {
+    avatar_url: 'https://cdn1.iconfinder.com/data/icons/web-ui-2/16/UI_Icons_Outline-38-512.png',
+  },
   username: 'joshua_l',
-  userpic: 'https://cdn1.iconfinder.com/data/icons/web-ui-2/16/UI_Icons_Outline-38-512.png',
   review_title: 'Vue.js',
   review_desc: '<b>JavaScript</b> framework for building interactive web applications ⚡',
   liked: true,
-  likes: 515,
+  stargazers_count: 515,
   forked: true,
   forks: 44,
   date: '15 MAY',
-  issues: [
-    {
-      id: 1,
-      username: 'Tony',
-      issue_text: 'Comment #1 from vue'
-    },
-    {
-      id: 2,
-      username: 'Serj_kek',
-      issue_text: 'Issue for vue from serj_kek'
-    },
-    {
-      id: 3,
-      username: 'Anonymouse',
-      issue_text: 'Another comment'
-    }
-  ]
+  issues: {
+    loading: false,
+    data: [
+      {
+        id: 1,
+        username: 'Tony',
+        issue_text: 'Comment #1 from vue'
+      },
+      {
+        id: 2,
+        username: 'Serj_kek',
+        issue_text: 'Issue for vue from serj_kek'
+      },
+      {
+        id: 3,
+        username: 'Anonymouse',
+        issue_text: 'Another comment'
+      }
+    ]
+  }
 }
 
 export const defaultView = () => ({

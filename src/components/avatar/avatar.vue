@@ -1,12 +1,10 @@
 <template>
-    <div class="avatar-component">
-        <div :class="['image', {'bordered' : active }]" :style="style">
-            <img v-bind="$attrs">
-        </div>
-        <div class="username">
-            {{ title }}
-        </div>
+  <div class="avatar-component">
+    <div :class="['image', {'bordered' : active }]" :style="style">
+      <img v-bind="$attrs">
     </div>
+    <div class="username">{{ title }}</div>
+  </div>
 </template>
 
 <script>

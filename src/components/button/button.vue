@@ -1,10 +1,10 @@
 <template>
-    <button :class="['c-button', `theme-${theme}`, { loading }]">
-        <span class="btn-text">
-          <spinner v-if='loading' />
-            <slot v-else></slot>
-        </span>
-    </button>
+  <button :class="['c-button', `theme-${theme}`, { loading }]">
+    <span class="btn-text">
+      <spinner v-if='loading' />
+      <slot v-else></slot>
+    </span>
+  </button>
 </template>
 
 <script>
