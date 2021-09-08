@@ -1,9 +1,9 @@
 <template>
-  <div class="header" style="display: flex;align-items: center;justify-content: space-between;">
+  <div class="header">
     <h1>Repositories</h1>
-    <h3 style="font-size: 18px; color:gray">{{ user.public_repos }}</h3>
+    <h3>{{ user.public_repos }}</h3>
   </div>
-  <div class="loader" v-if="userRepos.loading" style="color: #31AE54; display: flex; justify-content: center;">
+  <div class="loader" v-if="userRepos.loading">
     <spinner />
   </div>
   <div class="user-feeds" v-else>
@@ -45,3 +45,4 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped src='./repos.scss'></style>

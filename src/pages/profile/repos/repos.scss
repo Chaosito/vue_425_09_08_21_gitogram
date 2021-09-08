@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    >h3 {
+        font-size: 18px;
+        color:gray
+    }
+}
+.loader {
+    color: #31AE54;
+    display: flex;
+    justify-content: center;
+}
