@@ -6,12 +6,7 @@
     </div>
   </div>
   <div class="feed-body">
-    <div class="feedbody_popup">
-      <div class="review-title">{{ reviewData.name }}</div>
-      <div v-html="reviewData.description"></div>
-      <score v-bind:review-object="reviewData" />
-      <!-- <score v-bind:review-object="reviewData" @likeClicked="likeClicked" @forkClicked="forkClicked" /> -->
-    </div>
+    <feedbody v-bind:review-object="reviewData" />
     <div class="c-feed">
         <toggler @onToggle="toggle" />
         <div class="comments" v-if="shown">
@@ -30,7 +25,7 @@
 import comment from '../comment'
 import toggler from '../toggler'
 import placeholder from '../placeholder'
-import score from '../../components/score/score.vue'
+import feedbody from './feedbody'
 
 import { mapActions } from 'vuex'
 export default {
@@ -38,8 +33,8 @@ export default {
   components: {
     comment,
     toggler,
-    score,
-    placeholder
+    placeholder,
+    feedbody
   },
   data () {
     return {
