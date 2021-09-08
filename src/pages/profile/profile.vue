@@ -13,12 +13,14 @@
           <div class="username">{{ user.name }}</div>
         </div>
       </div>
+      <div class="left-profile-links">
+        <h1>Links</h1>
+        <router-link :to="{ name: 'profile-repos' }">Repositories</router-link><br>
+        <router-link :to="{ name: 'profile-following' }">Following</router-link>
+      </div>
     </div>
     <div class="right-side">
-      <router-link :to="{ name: 'profile-repos' }">Repositories</router-link><br>
-      <router-link :to="{ name: 'profile-following' }">Following</router-link>
       <router-view />
-      <div v-for="n in 2" :key="n">Lorem Ipsum, dolor sit ameit</div>
     </div>
   </div>
 </template>

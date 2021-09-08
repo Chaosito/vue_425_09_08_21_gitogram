@@ -1,9 +1,10 @@
 import { createStore } from 'vuex'
-import randomuser from './modules/randomuser'
-import trendings from './modules/trendings'
-import user from './modules/user'
-import starred from './modules/starred'
 import auth from './modules/auth'
+import user from './modules/user'
+import trendings from './modules/trendings'
+import starred from './modules/starred'
+import randomuser from './modules/randomuser'
+import userRepos from './modules/userRepos'
 
 export default createStore({
   getters: {
@@ -15,9 +16,10 @@ export default createStore({
   },
   modules: {
     auth,
-    randomuser,
-    trendings,
     user,
-    starred
+    trendings,
+    starred,
+    randomuser,
+    userRepos
   }
 })

@@ -23,7 +23,6 @@
                 </div>
             </div>
             <div class="button">
-                <!-- onLoading Disable emits -->
                 <x-button disabled
                     :theme="data.following.status ? 'gray' : 'green'"
                     :loading='data.following.loading'
