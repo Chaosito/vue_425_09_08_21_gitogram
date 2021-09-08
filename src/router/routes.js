@@ -6,7 +6,7 @@ import userProfile from '../pages/userProfile'
 import page404 from '../pages/404'
 import profile from '../pages/profile'
 // import profileRepos from '../pages/profile/repos'
-import profileFollowing from '../pages/profile/following'
+// import profileFollowing from '../pages/profile/following'
 
 export default [
   {
@@ -44,7 +44,8 @@ export default [
       {
         name: 'profile-following',
         path: 'following',
-        component: profileFollowing
+        // component: profileFollowing
+        component: () => import('../pages/profile/following')
       }
     ]
   },

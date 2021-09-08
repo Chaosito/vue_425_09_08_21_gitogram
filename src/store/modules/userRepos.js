@@ -4,7 +4,6 @@ export default {
   namespaced: true,
   state: { data: null, loading: false, error: '' },
   getters: {
-    getRepoById: (state) => (id) => { return state.data.find(item => item.id === id) },
     getRepos: (state) => { return state.data }
   },
   mutations: {
@@ -17,10 +16,10 @@ export default {
       commit('SET_USER_REPOS_LOADING', true)
       commit('SET_USER_REPOS_LOADING_ERROR', '')
       try {
-        // if (getters.getRepos) return
+        if (getters.getRepos) return
         const { data } = await api.user.getUserRepos()
         commit('SET_USER_REPOS_DATA', data)
-        console.log(data)
+        // console.log(data)
       } catch (error) {
         commit('SET_USER_REPOS_LOADING_ERROR', 'Не удалось загрузить данные. ' + error)
         console.log(error)

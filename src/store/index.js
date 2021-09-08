@@ -5,6 +5,7 @@ import trendings from './modules/trendings'
 import starred from './modules/starred'
 import randomuser from './modules/randomuser'
 import userRepos from './modules/userRepos'
+import following from './modules/following'
 
 export default createStore({
   getters: {
@@ -20,6 +21,7 @@ export default createStore({
     trendings,
     starred,
     randomuser,
-    userRepos
+    userRepos,
+    following
   }
 })

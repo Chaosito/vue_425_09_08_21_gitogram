@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import pageHeader from '../../components/pageHeader'
 
 export default {
@@ -41,13 +41,8 @@ export default {
       isLogged: 'user/isLogged'
     })
   },
-  methods: {
-    ...mapActions({
-      logout: 'auth/logout'
-    })
-  },
   async mounted () {
-    console.log(this.user)
+    // console.log(this.user)
   }
 }
 </script>

@@ -9,3 +9,7 @@ export const getUser = () => {
 export const getUserRepos = () => makeRequest({
   url: '/user/repos'
 })
+
+export const getFollowing = ({ login }) => makeRequest({
+  url: `/users/${login}/following`
+})

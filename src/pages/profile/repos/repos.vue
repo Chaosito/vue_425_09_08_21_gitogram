@@ -6,7 +6,7 @@
   <div class="loader" v-if="userRepos.loading">
     <spinner />
   </div>
-  <div class="user-feeds" v-else>
+  <div v-else>
     <ul class="reviews">
       <li class="review-item" v-for="review in userRepos.data" :key="review.id">
         <feedbody v-bind:review-object="review" />
@@ -38,7 +38,6 @@ export default {
   async created () {
     try {
       await this.fetchUserRepos()
-      console.log(this.userRepos)
     } catch (error) {
       console.log('err', error)
     }
