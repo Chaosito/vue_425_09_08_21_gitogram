@@ -1,11 +1,9 @@
 import feed from './feed.vue'
-import score from '../score/score.vue'
 
 export default {
   title: 'Feed',
   components: {
-    feed,
-    score
+    feed
   }
 }
 
@@ -46,8 +44,7 @@ const review = {
 
 export const defaultView = () => ({
   components: {
-    feed,
-    score
+    feed
   },
   data () {
     return {
