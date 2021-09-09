@@ -1,4 +1,5 @@
 import pageHeader from './pageHeader.vue'
+import { mapActions, mapState, mapGetters } from 'vuex'
 
 export default {
   title: 'PageHeader',
