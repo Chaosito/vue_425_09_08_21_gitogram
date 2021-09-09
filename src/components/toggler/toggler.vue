@@ -16,6 +16,7 @@ export default {
   props: {
     isOpened: String
   },
+  emits: ['onToggle'],
   data () {
     return {
       thisIsOpened: this.isOpened
