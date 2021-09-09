@@ -15,31 +15,26 @@
   </div>
 </template>
 <script>
-import { mapActions, mapState } from 'vuex'
 import feedbody from '../../../components/feed/feedbody'
 import spinner from '../../../components/spinner'
+import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
-  components: {
-    spinner,
-    feedbody
-  },
-  computed: {
-    ...mapState({
-      userRepos: state => state.userRepos,
-      user: state => state.user.data
+  components: { spinner, feedbody },
+  setup () {
+    const store = useStore()
+    onMounted(async () => {
+      try {
+        await store.dispatch('userRepos/fetchUserRepos')
+      } catch (error) {
+        console.log('Error when loading user repositories: ', error)
+      }
     })
-  },
-  methods: {
-    ...mapActions({
-      fetchUserRepos: 'userRepos/fetchUserRepos'
-    })
-  },
-  async created () {
-    try {
-      await this.fetchUserRepos()
-    } catch (error) {
-      console.log('err', error)
+
+    return {
+      user: computed(() => store.state.user.data),
+      userRepos: computed(() => store.state.userRepos)
     }
   }
 }

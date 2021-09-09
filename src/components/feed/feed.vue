@@ -26,8 +26,9 @@ import comment from '../comment'
 import toggler from '../toggler'
 import placeholder from '../placeholder'
 import feedbody from './feedbody'
+import { ref } from 'vue'
+import { useStore } from 'vuex'
 
-import { mapActions } from 'vuex'
 export default {
   name: 'feed-item',
   components: {
@@ -36,19 +37,22 @@ export default {
     placeholder,
     feedbody
   },
-  data () {
-    return {
-      shown: false
-    }
-  },
   props: { reviewData: Object },
-  methods: {
-    ...mapActions({
-      setRepoIssues: 'starred/setRepoIssues'
-    }),
-    async toggle (isOpened) {
-      this.shown = isOpened
-      await this.setRepoIssues(this.reviewData.id)
+  setup (props) {
+    const shown = ref(false)
+    const store = useStore()
+
+    const toggle = async (isOpened) => {
+      shown.value = isOpened
+      try {
+        await store.dispatch('starred/setRepoIssues', props.reviewData.id)
+      } catch (error) {
+        console.log('Error when loading starred repositories: ', error)
+      }
+    }
+    return {
+      shown,
+      toggle
     }
   }
 }

@@ -25,24 +25,20 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapState } from 'vuex'
 import pageHeader from '../../components/pageHeader'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
   name: 'feeds',
   components: {
     pageHeader
   },
-  computed: {
-    ...mapState({
-      user: state => state.user.data
-    }),
-    ...mapGetters({
-      isLogged: 'user/isLogged'
-    })
-  },
-  async mounted () {
-    // console.log(this.user)
+  setup () {
+    const store = useStore()
+    return {
+      user: computed(() => store.state.user.data)
+    }
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <h1>Following</h1>
-    <h3>{{ user.following }}</h3>
+    <h3>{{ user.data.following }}</h3>
   </div>
   <div class="loader" v-if="following.loading">
     <spinner />
@@ -15,31 +15,29 @@
   </div>
 </template>
 <script>
-import { mapActions, mapState } from 'vuex'
 import spinner from '../../../components/spinner'
 import followingUser from '../../../components/followingUser'
+import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
   components: {
     spinner,
     followingUser
   },
-  computed: {
-    ...mapState({
-      user: state => state.user.data,
-      following: state => state.following
+  setup () {
+    const store = useStore()
+    const user = computed(() => store.state.user)
+    onMounted(async () => {
+      try {
+        await store.dispatch('following/fetchFollowing', { login: user.value.data.login })
+      } catch (error) {
+        console.log('Error when loading user following: ', error)
+      }
     })
-  },
-  methods: {
-    ...mapActions({
-      fetchFollowing: 'following/fetchFollowing'
-    })
-  },
-  async created () {
-    try {
-      await this.fetchFollowing({ login: this.user.login })
-    } catch (error) {
-      console.log('err', error)
+    return {
+      user,
+      following: computed(() => store.state.following)
     }
   }
 }
