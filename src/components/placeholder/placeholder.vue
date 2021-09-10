@@ -1,8 +1,8 @@
 <template>
   <div class="placeholder">
-    <div class="pseudo-img"></div>
+    <div class="pseudo-img" v-for="item in images" :key="item"></div>
     <div class="pseudo-text" v-for="item in paragraphs" :key="item">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue.</p>
+      <p>&nbsp;</p>
     </div>
   </div>
 </template>
@@ -10,6 +10,7 @@
 <script>
 export default {
   props: {
+    images: Number,
     paragraphs: Number
   }
 }

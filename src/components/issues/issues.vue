@@ -4,7 +4,7 @@
           <toggler @onToggle="handleToggle" />
         </div>
         <div class="c-loader" v-if="opened && loading">
-            <placeholder :paragraphs="1"></placeholder>
+            <placeholder :paragraphs="3"></placeholder>
         </div>
         <ul class="comments" v-if="issues && issues.length && opened">
             <li class="comment-item" v-for="issue in issues" :key="issue.id">

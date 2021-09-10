@@ -1,7 +1,7 @@
 <template>
     <div class="c-stories-slider">
         <div class="stories-container">
-            <ul class="stories" style="transform: translateX(-0px)" ref="slider">
+            <ul class="stories" ref="slider">
               <li
               class="stories-item"
               :class="{ 'active' : slideIndex === index }"

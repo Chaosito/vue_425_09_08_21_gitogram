@@ -4,6 +4,9 @@ export default {
   title: 'Placeholder',
   components: { placeholder },
   argTypes: {
+    images: {
+      control: { type: 'number' }
+    },
     paragraphs: {
       control: { type: 'number' }
     }
@@ -21,6 +24,7 @@ export const defaultView = (args) => ({
 })
 
 defaultView.args = {
+  images: 2,
   paragraphs: 3
 }
 

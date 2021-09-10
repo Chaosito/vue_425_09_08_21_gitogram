@@ -19,7 +19,7 @@
                         class="content-text"
                         v-html="data.content"
                     ></div>
-                    <placeholder v-else :paragraphs="2" />
+                    <placeholder v-else :images="1" :paragraphs="2" />
                 </div>
             </div>
             <div class="button">
