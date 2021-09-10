@@ -66,4 +66,11 @@ describe('Component: issues', () => {
     await wrapper.find('.toggler button').trigger('click')
     expect(wrapper.find('.c-loader .placeholder').exists()).toBe(true)
   })
+
+  it('onClick: Changes the text View\\Hide', async () => {
+    const wrapper = mount(issues)
+    expect(wrapper.find('.text').text()).toBe('View issues')
+    await wrapper.find('button').trigger('click')
+    expect(wrapper.find('.text').text()).toBe('Hide issues')
+  })
 })
