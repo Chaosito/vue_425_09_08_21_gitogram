@@ -1,7 +1,9 @@
 <template>
     <div class="c-issues">
-        <toggler @onToggle="handleToggle" />
-        <div class="c-loader" v-if="loading">
+        <div class="toggler">
+          <toggler @onToggle="handleToggle" />
+        </div>
+        <div class="c-loader" v-if="opened && loading">
             <placeholder :paragraphs="1"></placeholder>
         </div>
         <ul class="comments" v-if="issues?.length && opened">
@@ -34,11 +36,9 @@ export default {
   setup (props, { emit }) {
     const opened = ref(false)
     const handleToggle = (isOpened) => {
-      console.log('togglerTurn', isOpened, props)
       opened.value = isOpened
 
       if (isOpened && (!props.issues || props.issues?.length === 0)) {
-        console.log('tryLoad')
         emit('loadContent')
       }
     }
