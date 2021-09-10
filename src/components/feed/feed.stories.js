@@ -26,17 +26,29 @@ const review = {
       {
         id: 1,
         username: 'Tony',
-        issue_text: 'Comment #1 from vue'
+        issue_text: 'Comment #1 from vue',
+        user: {
+          login: 'UserOne'
+        },
+        title: 'comment1'
       },
       {
         id: 2,
         username: 'Serj_kek',
-        issue_text: 'Issue for vue from serj_kek'
+        issue_text: 'Issue for vue from serj_kek',
+        user: {
+          login: 'UserTwo'
+        },
+        title: 'comment2'
       },
       {
         id: 3,
         username: 'Anonymouse',
-        issue_text: 'Another comment'
+        issue_text: 'Another comment',
+        user: {
+          login: 'UserThree'
+        },
+        title: 'comment3'
       }
     ]
   }

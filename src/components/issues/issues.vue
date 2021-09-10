@@ -6,7 +6,7 @@
         <div class="c-loader" v-if="opened && loading">
             <placeholder :paragraphs="1"></placeholder>
         </div>
-        <ul class="comments" v-if="issues?.length && opened">
+        <ul class="comments" v-if="issues && issues.length && opened">
             <li class="comment-item" v-for="issue in issues" :key="issue.id">
                 <comment :username="issue.user.login" :text="issue.title"></comment>
             </li>
@@ -38,7 +38,7 @@ export default {
     const handleToggle = (isOpened) => {
       opened.value = isOpened
 
-      if (isOpened && (!props.issues || props.issues?.length === 0)) {
+      if (isOpened && (!props.issues || props.issues.length === 0)) {
         emit('loadContent')
       }
     }
