@@ -2,14 +2,19 @@ import { mount } from '@vue/test-utils'
 import issues from './issues'
 
 describe('Component: issues', () => {
-  it('emit: loadContent runned once', async () => {
+  it('onClick: Changes the text View\\Hide', async () => {
+    const wrapper = mount(issues)
+    expect(wrapper.find('.text').text()).toBe('View issues')
+    await wrapper.find('button').trigger('click')
+    expect(wrapper.find('.text').text()).toBe('Hide issues')
+  })
+
+  it('emit: loadContent runned when click view issues only', async () => {
     const wrapper = mount(issues)
     await wrapper.find('.toggler button').trigger('click')
-    expect(wrapper.emitted().loadContent.length).toBe(1)
-
-    // expect(wrapper.find('.text').text()).toBe('View issues')
-    // await wrapper.find('button').trigger('click')
-    // expect(wrapper.find('.text').text()).toBe('Hide issues')
+    await wrapper.find('.toggler button').trigger('click')
+    await wrapper.find('.toggler button').trigger('click')
+    expect(wrapper.emitted().loadContent.length).toBe(2)
   })
 
   it("Draw list of elemets", async () => {
@@ -58,19 +63,11 @@ describe('Component: issues', () => {
     }
     const wrapper = mount(issues, {
         propsData: {
-          issues: Array.from({length: 1}).map(x => issue),
           loading: true
         }
     })
     expect(wrapper.find('.c-loader .placeholder').exists()).toBe(false)
     await wrapper.find('.toggler button').trigger('click')
     expect(wrapper.find('.c-loader .placeholder').exists()).toBe(true)
-  })
-
-  it('onClick: Changes the text View\\Hide', async () => {
-    const wrapper = mount(issues)
-    expect(wrapper.find('.text').text()).toBe('View issues')
-    await wrapper.find('button').trigger('click')
-    expect(wrapper.find('.text').text()).toBe('Hide issues')
   })
 })
