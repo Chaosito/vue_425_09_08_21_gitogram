@@ -9,7 +9,9 @@
         </div>
         <div class="userinfo">
           <h2>{{ user.login }}</h2>
-          <div class="info">54 <span>reposts</span> 834 <a href="#">watchers</a></div>
+          <div class="info">
+            {{ user.followers }} <span>followers</span>
+            {{ user.following }} <router-link :to="{ name: 'profile-following' }">following</router-link></div>
           <div class="username">{{ user.name }}</div>
         </div>
       </div>
