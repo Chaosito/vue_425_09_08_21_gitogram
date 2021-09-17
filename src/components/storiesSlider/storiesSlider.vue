@@ -25,7 +25,6 @@
         </div>
     </div>
 </template>
-
 <script>
 import storyPostItem from '../storyPostItem'
 import { mapState, mapActions } from 'vuex'

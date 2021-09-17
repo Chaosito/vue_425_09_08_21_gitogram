@@ -19,6 +19,5 @@ export const getTokenByCode = ({ code }) => makeRequest({
   headers: {
     'Content-Type': 'application/json'
   },
-  //   params: { clientId, code, clientSecret },
   data: { clientId, code, clientSecret }
 })

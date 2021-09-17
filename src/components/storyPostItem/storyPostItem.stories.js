@@ -21,7 +21,7 @@ export default {
     },
     followingLoading: {
       control: { type: 'boolean' }
-    },
+    }
   }
 }
 
@@ -30,17 +30,20 @@ export const defaultView = (args) => ({
     storyPostItem
   },
   data () {
-    return { args, storyData: {
-      id: 1,
-      userAvatar: args.userPic,
-      username: args.userName,
-      content: '',
-      following: {
-        status: args.followingStatus,
-        loading: args.followingLoading
+    return {
+      args,
+      storyData: {
+        id: 1,
+        userAvatar: args.userPic,
+        username: args.userName,
+        content: '',
+        following: {
+          status: args.followingStatus,
+          loading: args.followingLoading
+        }
       }
-    } }
-  },  
+    }
+  },
   template: `<story-post-item
   :data="storyData"
   :active="args.active"

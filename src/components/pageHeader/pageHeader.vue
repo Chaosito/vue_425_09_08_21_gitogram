@@ -4,7 +4,7 @@
       <div class="headline">
         <div class="topline-logo">
           <button class="logo" @click="$router.push('/')">
-              <logo :color="theme === 'black' ? 'white' : 'black'" />
+            <logo :color="theme === 'black' ? 'white' : 'black'" />
           </button>
         </div>
         <div class="topline-icons">
@@ -50,5 +50,4 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" src="./pageHeader.scss" scoped></style>

@@ -41,7 +41,6 @@ export default {
             ...payload.data
           }
         }
-        // console.log(repo)
         return repo
       })
     }
@@ -60,7 +59,6 @@ export default {
         // if (getters.getRepos) return
         const { data } = await api.starred.getStarredRepos({ limit })
         commit('SET_STARRED_DATA', data)
-        // console.log(data)
       } catch (error) {
         commit('SET_STARRED_LOADING_ERROR', 'Не удалось загрузить данные. ' + error)
         console.log(error)

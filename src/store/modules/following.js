@@ -19,7 +19,6 @@ export default {
         if (getters.getFollowingUsers) return
         const { data } = await api.user.getFollowing({ login })
         commit('SET_FOLLOWING_DATA', data)
-        // console.log(data)
       } catch (error) {
         commit('SET_FOLLOWING_LOADING_ERROR', 'Не удалось загрузить данные. ' + error)
         console.log(error)

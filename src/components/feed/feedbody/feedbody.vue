@@ -3,7 +3,6 @@
       <div class="review-title">{{ reviewObject.name }}</div>
       <div v-html="reviewObject.description"></div>
       <score v-bind:review-object="reviewObject" />
-      <!-- <score v-bind:review-object="reviewData" @likeClicked="likeClicked" @forkClicked="forkClicked" /> -->
     </div>
 </template>
 <script>
